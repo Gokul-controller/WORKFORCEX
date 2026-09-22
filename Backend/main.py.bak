@@ -1,0 +1,404 @@
+from fastapi import FastAPI
+import sys
+import os
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'database'))
+from database import SessionLocal, Employee
+
+app = FastAPI(title="Workforce Digital Twin API")
+
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/")
+def home():
+    return {"message": "Workforce Digital Twin Backend is Running"}
+
+@app.get("/employees")
+def get_employees():
+    db = SessionLocal()
+    employees = db.query(Employee).all()
+    db.close()
+    return employees
+from pydantic import BaseModel
+
+class EmployeeCreate(BaseModel):
+    employee_id: str
+    rfid_uid: str
+    name: str
+    department: str
+    role: str
+
+@app.post("/employees")
+def add_employee(emp: EmployeeCreate):
+    db = SessionLocal()
+    new_emp = Employee(
+        employee_id=emp.employee_id,
+        rfid_uid=emp.rfid_uid,
+        name=emp.name,
+        department=emp.department,
+        role=emp.role
+    )
+    db.add(new_emp)
+    db.commit()
+    db.close()
+    return {"message": "Employee added successfully"}
+
+from database import Skill
+
+class SkillCreate(BaseModel):
+    skill_name: str
+
+@app.get("/skills")
+def get_skills():
+    db = SessionLocal()
+    skills = db.query(Skill).all()
+    db.close()
+    return skills
+
+@app.post("/skills")
+def add_skill(skill: SkillCreate):
+    db = SessionLocal()
+    new_skill = Skill(skill_name=skill.skill_name)
+    db.add(new_skill)
+    db.commit()
+    db.close()
+    return {"message": "Skill added successfully"}
+
+from database import Project
+
+class ProjectCreate(BaseModel):
+    project_name: str
+    description: str
+    priority: str
+    deadline: str
+
+@app.get("/projects")
+def get_projects():
+    db = SessionLocal()
+    projects = db.query(Project).all()
+    db.close()
+    return projects
+
+@app.post("/projects")
+def add_project(project: ProjectCreate):
+    db = SessionLocal()
+    new_project = Project(
+        project_name=project.project_name,
+        description=project.description,
+        priority=project.priority,
+        deadline=project.deadline
+    )
+    db.add(new_project)
+    db.commit()
+    db.close()
+    return {"message": "Project added successfully"}
+
+from database import Task
+
+class TaskCreate(BaseModel):
+    project_id: int
+    task_name: str
+    description: str
+    required_skill: str
+    required_skill_level: int
+    priority: str
+    deadline: str
+
+@app.get("/tasks")
+def get_tasks():
+    db = SessionLocal()
+    tasks = db.query(Task).all()
+    db.close()
+    return tasks
+
+@app.post("/tasks")
+def add_task(task: TaskCreate):
+    db = SessionLocal()
+    new_task = Task(
+        project_id=task.project_id,
+        task_name=task.task_name,
+        description=task.description,
+        required_skill=task.required_skill,
+        required_skill_level=task.required_skill_level,
+        priority=task.priority,
+        deadline=task.deadline
+    )
+    db.add(new_task)
+    db.commit()
+    db.close()
+    return {"message": "Task added successfully"}
+
+from database import EmployeeSkill
+
+class EmployeeSkillCreate(BaseModel):
+    employee_id: int
+    skill_name: str
+    skill_level: int
+
+@app.get("/employee_skills")
+def get_employee_skills():
+    db = SessionLocal()
+    data = db.query(EmployeeSkill).all()
+    db.close()
+    return data
+
+@app.post("/employee_skills")
+def add_employee_skill(es: EmployeeSkillCreate):
+    db = SessionLocal()
+    new_es = EmployeeSkill(
+        employee_id=es.employee_id,
+        skill_name=es.skill_name,
+        skill_level=es.skill_level
+    )
+    db.add(new_es)
+    db.commit()
+    db.close()
+    return {"message": "Employee skill added successfully"}
+
+    import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'ai'))
+from matcher import match_workers_for_task
+
+@app.get("/match")
+def get_matches(skill: str, level: int = 0):
+    return match_workers_for_task(skill, level)
+
+from database import Assignment
+
+class AssignmentCreate(BaseModel):
+    task_id: int
+    employee_id: int
+    employee_name: str
+    skill_match_score: float
+
+@app.get("/assignments")
+def get_assignments():
+    db = SessionLocal()
+    data = db.query(Assignment).all()
+    db.close()
+    return data
+
+@app.post("/assignments")
+def approve_assignment(a: AssignmentCreate):
+    db = SessionLocal()
+    new_assignment = Assignment(
+        task_id=a.task_id,
+        employee_id=a.employee_id,
+        employee_name=a.employee_name,
+        skill_match_score=a.skill_match_score
+    )
+    db.add(new_assignment)
+    db.commit()
+    db.close()
+    return {"message": "Assignment approved and saved"}
+
+import sys
+sys.path.append(os.path.dirname(__file__))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'ai'))
+from team_formation import form_team
+
+class TeamRequest(BaseModel):
+    required_skills: list[str]
+
+@app.post("/team-formation")
+def get_team(request: TeamRequest):
+    return form_team(request.required_skills)
+
+
+@app.delete("/employees/{employee_id}")
+def delete_employee(employee_id: int):
+    db = SessionLocal()
+    emp = db.query(Employee).filter(Employee.id == employee_id).first()
+    if not emp:
+        db.close()
+        return {"error": "Employee not found"}
+    db.delete(emp)
+    db.commit()
+    db.close()
+    return {"message": "Employee removed successfully"}
+
+
+class AddMemberRequest(BaseModel):
+    employee_id: int
+
+
+
+@app.delete("/projects/{project_id}/members/{employee_id}")
+def remove_project_member(project_id: int, employee_id: int):
+    db = SessionLocal()
+    emp = db.query(Employee).filter(Employee.id == employee_id).first()
+    if not emp:
+        db.close()
+        return {"error": "Employee not found"}
+    emp.current_project_id = None
+    emp.current_project_name = None
+    emp.availability = "Available"
+    db.commit()
+    db.close()
+    return {"message": "Member removed from project"}
+class EmployeeUpdate(BaseModel):
+    name: str
+    department: str
+    role: str
+
+@app.put("/employees/{employee_id}")
+def update_employee(employee_id: int, emp: EmployeeUpdate):
+    db = SessionLocal()
+    existing = db.query(Employee).filter(Employee.id == employee_id).first()
+    if not existing:
+        db.close()
+        return {"error": "Employee not found"}
+    existing.name = emp.name
+    existing.department = emp.department
+    existing.role = emp.role
+    db.commit()
+    db.close()
+    return {"message": "Employee updated successfully"}
+
+
+
+@app.delete("/employees/{employee_id}")
+def delete_employee(employee_id: int):
+    db = SessionLocal()
+    emp = db.query(Employee).filter(Employee.id == employee_id).first()
+    if emp:
+        db.delete(emp)
+        db.commit()
+    db.close()
+    return {"message": "Employee removed successfully"}
+
+
+@app.delete("/projects/{project_id}/members/{employee_id}")
+def remove_project_member(project_id: int, employee_id: int):
+    db = SessionLocal()
+    emp = db.query(Employee).filter(Employee.id == employee_id).first()
+    if emp:
+        emp.availability = "Available"
+        db.commit()
+    db.close()
+    return {"message": "Member removed from project"}
+
+
+@app.delete("/employees/{employee_id}")
+def delete_employee(employee_id: int):
+    db = SessionLocal()
+    emp = db.query(Employee).filter(Employee.id == employee_id).first()
+    if emp:
+        db.delete(emp)
+        db.commit()
+    db.close()
+    return {"message": "Employee removed successfully"}
+
+
+class ProjectMemberAdd(BaseModel):
+    employee_id: Any
+
+@app.post("/projects/{project_id}/members")
+def add_project_member(project_id: int, member: ProjectMemberAdd):
+    db = SessionLocal()
+    emp = None
+    try:
+        emp = db.query(Employee).filter(Employee.id == int(member.employee_id)).first()
+    except (ValueError, TypeError):
+        pass
+    if not emp:
+        emp = db.query(Employee).filter(Employee.employee_id == str(member.employee_id)).first()
+
+    proj = db.query(Project).filter(Project.id == project_id).first()
+    if emp:
+        emp.availability = "On Project"
+        emp.current_project_id = project_id
+        if proj:
+            emp.current_project_name = proj.project_name
+        db.commit()
+    db.close()
+    return {"message": "Member added to project"}
+
+@app.delete("/projects/{project_id}/members/{employee_id}")
+def remove_project_member(project_id: int, employee_id: str):
+    db = SessionLocal()
+    emp = None
+    try:
+        emp = db.query(Employee).filter(Employee.id == int(employee_id)).first()
+    except (ValueError, TypeError):
+        pass
+    if not emp:
+        emp = db.query(Employee).filter(Employee.employee_id == str(employee_id)).first()
+    if emp:
+        emp.availability = "Available"
+        emp.current_project_id = None
+        emp.current_project_name = None
+        db.commit()
+    db.close()
+    return {"message": "Member removed from project"}
+
+@app.delete("/projects/{project_id}")
+def delete_project(project_id: int):
+    db = SessionLocal()
+    project = db.query(Project).filter(Project.id == project_id).first()
+    if not project:
+        db.close()
+        return {"error": "Project not found"}
+    
+    # Unassign employees linked to this project
+    employees = db.query(Employee).filter(Employee.current_project_id == project_id).all()
+    for emp in employees:
+        emp.current_project_id = None
+        emp.current_project_name = None
+        emp.availability = "Available"
+
+    # Delete tasks linked to this project
+    db.query(Task).filter(Task.project_id == project_id).delete()
+
+    db.delete(project)
+    db.commit()
+    db.close()
+    return {"message": "Project removed successfully"}
+
+
+@app.get("/attendance/scan/{rfid_uid}")
+def rfid_scan(rfid_uid: str):
+    db = SessionLocal()
+    employee = db.query(Employee).filter(Employee.rfid_uid == rfid_uid).first()
+    db.close()
+    if not employee:
+        return {"found": False, "message": "Unknown RFID card"}
+    return {
+        "found": True,
+        "employee_id": employee.employee_id,
+        "name": employee.name,
+        "role": employee.role,
+        "department": employee.department,
+        "availability": employee.availability,
+        "current_project_id": employee.current_project_id,
+        "current_project_name": employee.current_project_name
+    }
+
+
+@app.get("/attendance/scan/{rfid_uid}")
+def rfid_scan(rfid_uid: str):
+    db = SessionLocal()
+    employee = db.query(Employee).filter(Employee.rfid_uid == rfid_uid).first()
+    db.close()
+    if not employee:
+        return {"found": False, "message": "Unknown RFID card"}
+    return {
+        "found": True,
+        "employee_id": employee.employee_id,
+        "name": employee.name,
+        "role": employee.role,
+        "department": employee.department,
+        "availability": employee.availability,
+        "current_project_id": employee.current_project_id,
+        "current_project_name": employee.current_project_name
+    }
+    
+
