@@ -10,8 +10,8 @@
 // WIFI
 // =====================================================
 
-const char* WIFI_SSID = "evarose";
-const char* WIFI_PASSWORD = "123123123";
+const char* WIFI_SSID = "ev....";
+const char* WIFI_PASSWORD = "123....";
 
 // =====================================================
 // WORKFORCEX BACKEND
