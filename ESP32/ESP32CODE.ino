@@ -2,209 +2,1686 @@
 #include <HTTPClient.h>
 #include <SPI.h>
 #include <MFRC522.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_ST7735.h>
+#include <ArduinoJson.h>
 
-// ---------------- WiFi ----------------
-const char* WIFI_SSID = "J.....";
-const char* WIFI_PASSWORD = "200....";
+// =====================================================
+// WIFI
+// =====================================================
 
-// Your laptop/backend IP
-const char* BACKEND_IP = "10.157.97.186";
-const int BACKEND_PORT = 8000;
+const char* WIFI_SSID = "evarose";
+const char* WIFI_PASSWORD = "123123123";
 
-// ---------------- RFID ----------------
-#define RFID_SS  21
-#define RFID_RST 22
+// =====================================================
+// WORKFORCEX BACKEND
+// =====================================================
 
-MFRC522 rfid(RFID_SS, RFID_RST);
+const char* SERVER_IP = "10.89.92.65";
 
-// ---------------- LEDs + Buzzer ----------------
+const char* ATTENDANCE_URL =
+  "http://10.89.92.65:8000/attendance/rfid-scan";
+
+// =====================================================
+// RC522
+// =====================================================
+
+#define RFID_SS   21
+#define RFID_RST  22
+
+// =====================================================
+// TFT
+// =====================================================
+
+#define TFT_CS    5
+#define TFT_RST   4
+#define TFT_DC    2
+
+// =====================================================
+// STATUS LEDS + BUZZER
+// =====================================================
+
 #define GREEN_LED 25
 #define RED_LED   26
 #define BUZZER    27
 
-void beep() {
-  digitalWrite(BUZZER, HIGH);
-  delay(120);
-  digitalWrite(BUZZER, LOW);
+// =====================================================
+// SHARED SPI
+// =====================================================
+
+#define SPI_SCK   18
+#define SPI_MISO  19
+#define SPI_MOSI  23
+
+MFRC522 rfid(RFID_SS, RFID_RST);
+
+Adafruit_ST7735 tft(
+  TFT_CS,
+  TFT_DC,
+  TFT_RST
+);
+
+// =====================================================
+// EMPLOYEE DATA
+// =====================================================
+
+String employeeId;
+String employeeName;
+String employeeRole;
+String employeeDepartment;
+String employeeAvailability;
+String employeeRFID;
+
+int employeeWorkload = 0;
+float employeePerformance = 0;
+
+// =====================================================
+// PROJECT DATA
+// =====================================================
+
+String projectName;
+String projectId;
+String projectPriority;
+String projectStatus;
+String projectRole;
+String projectDeadline;
+
+float projectProgress = 0;
+
+// =====================================================
+// DIGITAL TWIN
+// =====================================================
+
+String workloadLabel;
+
+int activeTasks = 0;
+int completedTasks = 0;
+int overdueTasks = 0;
+
+String performanceSource;
+
+// =====================================================
+// ATTENDANCE
+// =====================================================
+
+String attendanceEvent;
+String attendanceTimestamp;
+
+// =====================================================
+// AI
+// =====================================================
+
+String aiTaskName;
+String aiProjectName;
+String aiRecommendedEmployee;
+
+float aiSkillMatch = 0;
+float aiWorkload = 0;
+float aiOverallScore = 0;
+
+String aiRecommendation;
+String aiReason;
+
+// =====================================================
+// CURRENT TASK
+// =====================================================
+
+String taskName;
+String taskProject;
+String taskStatus;
+String taskPriority;
+String taskDeadline;
+String taskRequiredSkill;
+
+int taskProgress = 0;
+
+// =====================================================
+// SKILL DATA
+// =====================================================
+
+String skillNames[10];
+int skillLevels[10];
+int skillCount = 0;
+
+// =====================================================
+// TASK DATA
+// =====================================================
+
+String taskNames[10];
+String taskStatuses[10];
+int taskProgresses[10];
+String taskPriorities[10];
+String taskDeadlines[10];
+
+int taskCount = 0;
+
+// =====================================================
+// PAGE CONTROL
+// =====================================================
+
+int currentPage = 0;
+
+unsigned long lastPageChange = 0;
+
+const unsigned long PAGE_INTERVAL = 2500;
+
+bool employeeLoaded = false;
+
+
+// =====================================================
+// SPI CONTROL
+// =====================================================
+
+void selectRFID()
+{
+  digitalWrite(TFT_CS, HIGH);
+  digitalWrite(RFID_SS, LOW);
 }
 
-void connectWiFi() {
+void deselectRFID()
+{
+  digitalWrite(RFID_SS, HIGH);
+}
 
-  Serial.print("Connecting to WiFi");
+void selectTFT()
+{
+  digitalWrite(RFID_SS, HIGH);
+  digitalWrite(TFT_CS, LOW);
+}
 
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+void deselectTFT()
+{
+  digitalWrite(TFT_CS, HIGH);
+}
 
-  int count = 0;
 
-  while (WiFi.status() != WL_CONNECTED && count < 30) {
-    delay(500);
-    Serial.print(".");
-    count++;
-  }
+// =====================================================
+// TFT UTILITIES
+// =====================================================
 
-  Serial.println();
+void clearScreen()
+{
+  selectTFT();
 
-  if (WiFi.status() == WL_CONNECTED) {
+  tft.fillScreen(ST77XX_BLACK);
 
-    Serial.println("WiFi CONNECTED");
-    Serial.print("ESP32 IP: ");
-    Serial.println(WiFi.localIP());
+  deselectTFT();
+}
 
-  } else {
 
-    Serial.println("WiFi CONNECTION FAILED");
+void drawHeader(const char* title)
+{
+  selectTFT();
+
+  tft.fillScreen(ST77XX_BLACK);
+
+  tft.setTextColor(ST77XX_CYAN);
+  tft.setTextSize(2);
+
+  tft.setCursor(4, 3);
+  tft.println("WORKFORCEX");
+
+  tft.drawLine(
+    0,
+    23,
+    159,
+    23,
+    ST77XX_CYAN
+  );
+
+  tft.setTextColor(ST77XX_YELLOW);
+  tft.setTextSize(1);
+
+  tft.setCursor(4, 28);
+  tft.println(title);
+
+  deselectTFT();
+}
+
+
+void printLine(
+  int y,
+  const String& label,
+  const String& value
+)
+{
+  selectTFT();
+
+  tft.setTextSize(1);
+
+  tft.setTextColor(ST77XX_WHITE);
+
+  tft.setCursor(4, y);
+  tft.print(label);
+
+  tft.setTextColor(ST77XX_CYAN);
+
+  tft.println(value);
+
+  deselectTFT();
+}
+
+
+// =====================================================
+// HOME SCREEN
+// =====================================================
+
+void showHome()
+{
+  selectTFT();
+
+  tft.fillScreen(ST77XX_BLACK);
+
+  tft.setTextColor(ST77XX_CYAN);
+  tft.setTextSize(2);
+
+  tft.setCursor(4, 8);
+  tft.println("WORKFORCEX");
+
+  tft.setTextSize(1);
+
+  tft.setTextColor(ST77XX_GREEN);
+
+  tft.setCursor(35, 45);
+  tft.println("RFID READY");
+
+  tft.setTextColor(ST77XX_WHITE);
+
+  tft.setCursor(24, 68);
+  tft.println("SCAN YOUR ID");
+
+  tft.setTextColor(ST77XX_CYAN);
+
+  tft.setCursor(25, 100);
+  tft.println("SYSTEM ONLINE");
+
+  deselectTFT();
+}
+
+
+// =====================================================
+// RFID DETECTED
+// =====================================================
+
+void showRFIDDetected(String uid)
+{
+  drawHeader("RFID DETECTED");
+
+  printLine(
+    48,
+    "UID: ",
+    uid
+  );
+
+  selectTFT();
+
+  tft.setTextColor(ST77XX_YELLOW);
+
+  tft.setCursor(4, 72);
+
+  tft.println("VERIFYING...");
+
+  deselectTFT();
+}
+
+
+// =====================================================
+// ACCESS GRANTED
+// =====================================================
+
+void showAccessGranted()
+{
+  drawHeader("ACCESS GRANTED");
+
+  selectTFT();
+
+  tft.setTextColor(ST77XX_GREEN);
+  tft.setTextSize(2);
+
+  tft.setCursor(5, 48);
+  tft.println(employeeName);
+
+  tft.setTextSize(1);
+
+  tft.setTextColor(ST77XX_WHITE);
+
+  tft.setCursor(5, 75);
+  tft.print("ID: ");
+
+  tft.println(employeeId);
+
+  tft.setCursor(5, 90);
+  tft.print("ROLE: ");
+
+  tft.println(employeeRole);
+
+  deselectTFT();
+}
+
+
+// =====================================================
+// PAGE 1 - EMPLOYEE
+// =====================================================
+
+void showEmployeePage()
+{
+  drawHeader("EMPLOYEE");
+
+  printLine(
+    45,
+    "NAME: ",
+    employeeName
+  );
+
+  printLine(
+    60,
+    "ID: ",
+    employeeId
+  );
+
+  printLine(
+    75,
+    "ROLE: ",
+    employeeRole
+  );
+
+  printLine(
+    90,
+    "DEPT: ",
+    employeeDepartment
+  );
+
+  printLine(
+    105,
+    "STATUS: ",
+    employeeAvailability
+  );
+}
+
+
+// =====================================================
+// PAGE 2 - STATUS
+// =====================================================
+
+void showStatusPage()
+{
+  drawHeader("EMPLOYEE STATUS");
+
+  printLine(
+    45,
+    "AVAILABILITY: ",
+    employeeAvailability
+  );
+
+  printLine(
+    62,
+    "WORKLOAD: ",
+    String(employeeWorkload) + "%"
+  );
+
+  printLine(
+    79,
+    "LEVEL: ",
+    workloadLabel
+  );
+
+  printLine(
+    96,
+    "PERFORMANCE: ",
+    String(employeePerformance, 1) + "%"
+  );
+}
+
+
+// =====================================================
+// PAGE 3 - PROJECT
+// =====================================================
+
+void showProjectPage()
+{
+  drawHeader("CURRENT PROJECT");
+
+  printLine(
+    42,
+    "PROJECT: ",
+    projectName
+  );
+
+  printLine(
+    57,
+    "ID: ",
+    projectId
+  );
+
+  printLine(
+    72,
+    "ROLE: ",
+    projectRole
+  );
+
+  printLine(
+    87,
+    "PRIORITY: ",
+    projectPriority
+  );
+
+  printLine(
+    102,
+    "STATUS: ",
+    projectStatus
+  );
+
+  printLine(
+    117,
+    "PROGRESS: ",
+    String(projectProgress, 1) + "%"
+  );
+}
+
+
+// =====================================================
+// PAGE 4 - SKILLS
+// =====================================================
+
+void showSkillsPage()
+{
+  drawHeader("SKILLS");
+
+  int y = 45;
+
+  for (int i = 0; i < skillCount && i < 5; i++)
+  {
+    selectTFT();
+
+    tft.setTextColor(ST77XX_WHITE);
+
+    tft.setCursor(4, y);
+
+    tft.print(skillNames[i]);
+
+    tft.setTextColor(ST77XX_CYAN);
+
+    tft.print(" ");
+
+    tft.print(skillLevels[i]);
+
+    tft.println("%");
+
+    deselectTFT();
+
+    y += 15;
   }
 }
 
-bool checkAccess(String uid) {
 
-  if (WiFi.status() != WL_CONNECTED) {
-    Serial.println("WiFi not connected");
+// =====================================================
+// PAGE 5 - TASK
+// =====================================================
+
+void showTaskPage()
+{
+  drawHeader("CURRENT TASK");
+
+  printLine(
+    42,
+    "TASK: ",
+    taskName
+  );
+
+  printLine(
+    57,
+    "STATUS: ",
+    taskStatus
+  );
+
+  printLine(
+    72,
+    "PROGRESS: ",
+    String(taskProgress) + "%"
+  );
+
+  printLine(
+    87,
+    "PRIORITY: ",
+    taskPriority
+  );
+
+  printLine(
+    102,
+    "SKILL: ",
+    taskRequiredSkill
+  );
+
+  printLine(
+    117,
+    "DEADLINE: ",
+    taskDeadline
+  );
+}
+
+
+// =====================================================
+// PAGE 6 - DIGITAL TWIN
+// =====================================================
+
+void showDigitalTwinPage()
+{
+  drawHeader("DIGITAL TWIN");
+
+  printLine(
+    43,
+    "WORKLOAD: ",
+    String(employeeWorkload) + "%"
+  );
+
+  printLine(
+    58,
+    "LEVEL: ",
+    workloadLabel
+  );
+
+  printLine(
+    73,
+    "ACTIVE TASKS: ",
+    String(activeTasks)
+  );
+
+  printLine(
+    88,
+    "COMPLETED: ",
+    String(completedTasks)
+  );
+
+  printLine(
+    103,
+    "OVERDUE: ",
+    String(overdueTasks)
+  );
+
+  printLine(
+    118,
+    "PERFORMANCE: ",
+    String(employeePerformance, 1) + "%"
+  );
+}
+
+
+// =====================================================
+// PAGE 7 - AI ALLOCATION
+// =====================================================
+
+void showAIPage()
+{
+  drawHeader("AI ALLOCATION");
+
+  printLine(
+    42,
+    "TASK: ",
+    aiTaskName
+  );
+
+  printLine(
+    57,
+    "SKILL MATCH: ",
+    String(aiSkillMatch, 1) + "%"
+  );
+
+  printLine(
+    72,
+    "WORKLOAD: ",
+    String(aiWorkload, 1) + "%"
+  );
+
+  printLine(
+    87,
+    "AI SCORE: ",
+    String(aiOverallScore, 1)
+  );
+
+  printLine(
+    102,
+    "DECISION: ",
+    aiRecommendation
+  );
+
+  printLine(
+    117,
+    "EMPLOYEE: ",
+    aiRecommendedEmployee
+  );
+}
+
+
+// =====================================================
+// PAGE 8 - ATTENDANCE
+// =====================================================
+
+void showAttendancePage()
+{
+  drawHeader("ATTENDANCE");
+
+  printLine(
+    45,
+    "EVENT: ",
+    attendanceEvent
+  );
+
+  printLine(
+    62,
+    "SOURCE: ",
+    "RFID"
+  );
+
+  printLine(
+    79,
+    "RFID: ",
+    employeeRFID
+  );
+
+  printLine(
+    96,
+    "TIME: ",
+    attendanceTimestamp
+  );
+}
+
+
+// =====================================================
+// PAGE HANDLER
+// =====================================================
+
+void showCurrentPage()
+{
+  switch (currentPage)
+  {
+    case 0:
+      showEmployeePage();
+      break;
+
+    case 1:
+      showStatusPage();
+      break;
+
+    case 2:
+      showProjectPage();
+      break;
+
+    case 3:
+      showSkillsPage();
+      break;
+
+    case 4:
+      showTaskPage();
+      break;
+
+    case 5:
+      showDigitalTwinPage();
+      break;
+
+    case 6:
+      showAIPage();
+      break;
+
+    case 7:
+      showAttendancePage();
+      break;
+  }
+}
+
+
+// =====================================================
+// PARSE TERMINAL DATA
+// =====================================================
+
+bool parseTerminalData(
+  const String& response
+)
+{
+  Serial.print("Free heap before JSON parse: ");
+  Serial.println(ESP.getFreeHeap());
+
+  Serial.print("Terminal response length: ");
+  Serial.println(response.length());
+
+  DynamicJsonDocument doc(32768);
+
+  DeserializationError error =
+    deserializeJson(
+      doc,
+      response
+    );
+
+  if (error)
+  {
+    Serial.print(
+      "JSON ERROR: "
+    );
+
+    Serial.println(
+      error.c_str()
+    );
+
+    Serial.print("Free heap after JSON error: ");
+    Serial.println(ESP.getFreeHeap());
+
     return false;
   }
 
-  String url =
-    "http://" +
-    String(BACKEND_IP) +
-    ":" +
-    String(BACKEND_PORT) +
-    "/attendance/scan/" +
-    uid;
+  Serial.print("Free heap after JSON parse: ");
+  Serial.println(ESP.getFreeHeap());
 
-  Serial.println();
-  Serial.println("ACCESS REQUEST");
-  Serial.println(url);
+  // ===================================================
+  // EMPLOYEE
+  // ===================================================
 
+  JsonObject employee =
+    doc["employee"];
+
+  employeeId =
+    employee["employee_id"] | "";
+
+  employeeName =
+    employee["name"] | "";
+
+  employeeRFID =
+    employee["rfid_uid"] | "";
+
+  employeeDepartment =
+    employee["department"] | "";
+
+  employeeRole =
+    employee["role"] | "";
+
+  employeeAvailability =
+    employee["availability"] | "";
+
+  employeeWorkload =
+    employee["workload"] | 0;
+
+  employeePerformance =
+    employee["performance_score"] | 0.0;
+
+
+  // ===================================================
+  // SKILLS
+  // ===================================================
+
+  skillCount = 0;
+
+  JsonArray skills =
+    doc["skills"];
+
+  for (
+    JsonObject skill : skills
+  )
+  {
+    if (skillCount >= 10)
+      break;
+
+    skillNames[skillCount] =
+      skill["skill_name"] | "";
+
+    skillLevels[skillCount] =
+      skill["skill_level"] | 0;
+
+    skillCount++;
+  }
+
+
+  // ===================================================
+  // PROJECT
+  // ===================================================
+
+  JsonArray projects =
+    doc["projects"];
+
+  if (!projects.isNull() &&
+      projects.size() > 0)
+  {
+    JsonObject project =
+      projects[0];
+
+    projectId =
+      String(
+        project["id"] | 0
+      );
+
+    projectName =
+      project["project_name"] | "";
+
+    projectPriority =
+      project["priority"] | "";
+
+    projectStatus =
+      project["status"] | "";
+
+    projectRole =
+      project["project_role"] | "";
+
+    projectDeadline =
+      project["deadline"] | "";
+
+    projectProgress =
+      project["progress"] | 0.0;
+  }
+  else
+  {
+    projectId = "";
+    projectName = "No project";
+    projectPriority = "";
+    projectStatus = "";
+    projectRole = "";
+    projectDeadline = "";
+    projectProgress = 0;
+  }
+
+
+  // ===================================================
+  // TASKS
+  // ===================================================
+
+  taskCount = 0;
+
+  JsonArray tasks =
+    doc["tasks"];
+
+  for (
+    JsonObject task : tasks
+  )
+  {
+    if (taskCount >= 10)
+      break;
+
+    taskNames[taskCount] =
+      task["task_name"] | "";
+
+    taskStatuses[taskCount] =
+      task["status"] | "";
+
+    taskProgresses[taskCount] =
+      task["progress"] | 0;
+
+    taskPriorities[taskCount] =
+      task["priority"] | "";
+
+    taskDeadlines[taskCount] =
+      task["deadline"] | "";
+
+    taskCount++;
+  }
+
+
+  // ===================================================
+  // FIRST TASK FOR DISPLAY
+  // ===================================================
+
+  if (taskCount > 0)
+  {
+    JsonObject task =
+      tasks[0];
+
+    taskName =
+      task["task_name"] | "";
+
+    taskStatus =
+      task["status"] | "";
+
+    taskProgress =
+      task["progress"] | 0;
+
+    taskPriority =
+      task["priority"] | "";
+
+    taskDeadline =
+      task["deadline"] | "";
+
+    taskRequiredSkill =
+      task["required_skill"] | "";
+
+    taskProject =
+      task["project_name"] | "";
+  }
+  else
+  {
+    taskName = "No task";
+    taskStatus = "";
+    taskProgress = 0;
+    taskPriority = "";
+    taskDeadline = "";
+    taskRequiredSkill = "";
+    taskProject = "";
+  }
+
+
+  // ===================================================
+  // DIGITAL TWIN
+  // ===================================================
+
+  JsonObject twin =
+    doc["digital_twin"];
+
+  workloadLabel =
+    twin["workload_label"] | "";
+
+  activeTasks =
+    twin["active_tasks"] | 0;
+
+  completedTasks =
+    twin["completed_tasks"] | 0;
+
+  overdueTasks =
+    twin["overdue_tasks"] | 0;
+
+  float twinPerformance =
+    twin["performance_score"] | 0.0;
+
+  employeePerformance =
+    twinPerformance;
+
+
+  // ===================================================
+  // AI ALLOCATION
+  // ===================================================
+
+  aiTaskName = "No recommendation";
+  aiProjectName = "";
+  aiRecommendedEmployee = "";
+  aiSkillMatch = 0;
+  aiWorkload = 0;
+  aiOverallScore = 0;
+  aiRecommendation = "";
+  aiReason = "";
+
+  JsonArray recommendations =
+    doc["ai_allocation"]["recommendations"];
+
+  // Find the first recommendation that has a
+  // real recommended_employee.
+
+  for (
+    JsonObject rec : recommendations
+  )
+  {
+    JsonObject recommended =
+      rec["recommended_employee"];
+
+    if (!recommended.isNull())
+    {
+      aiTaskName =
+        rec["task_name"] | "";
+
+      aiProjectName =
+        rec["project_name"] | "";
+
+      aiSkillMatch =
+        recommended["skill_match_percent"] | 0.0;
+
+      aiWorkload =
+        recommended["workload_percent"] | 0.0;
+
+      aiOverallScore =
+        recommended["overall_score"] | 0.0;
+
+      aiRecommendation =
+        recommended["recommendation"] | "";
+
+      aiReason =
+        recommended["reason"] | "";
+
+      aiRecommendedEmployee =
+        recommended["employee_id"] | "";
+
+      break;
+    }
+  }
+
+
+  // ===================================================
+  // ATTENDANCE
+  // ===================================================
+
+  JsonArray recentAttendance =
+    doc["attendance"]["recent"];
+
+  // The aggregate endpoint may return an empty
+  // recent array. The authoritative attendance
+  // result comes from /attendance/rfid-scan.
+  // Therefore attendanceEvent and timestamp
+  // are filled separately.
+
+
+  return true;
+}
+
+
+// =====================================================
+// FETCH TERMINAL DATA
+// =====================================================
+
+bool fetchTerminalData(
+  int employeeDatabaseId
+)
+{
   HTTPClient http;
 
+  String url =
+    "http://" +
+    String(SERVER_IP) +
+    ":8000/hardware/employee/" +
+    String(employeeDatabaseId) +
+    "/terminal";
+
+  Serial.println();
+  Serial.println(
+    "Fetching WorkforceX terminal data..."
+  );
+
+  Serial.print(
+    "Server: "
+  );
+
+  Serial.println(url);
+
   http.begin(url);
-  http.setTimeout(5000);
 
-  int responseCode = http.GET();
+  http.setTimeout(10000);
 
-  Serial.print("HTTP CODE: ");
-  Serial.println(responseCode);
+  http.addHeader(
+    "Accept",
+    "application/json"
+  );
 
-  if (responseCode != 200) {
+  Serial.print("Free heap before terminal GET: ");
+  Serial.println(ESP.getFreeHeap());
 
-    Serial.println("BACKEND ERROR");
+  int httpCode =
+    http.GET();
+
+  Serial.print(
+    "Terminal HTTP Response: "
+  );
+
+  Serial.println(httpCode);
+
+  if (httpCode != 200)
+  {
+    Serial.println(
+      "TERMINAL REQUEST FAILED"
+    );
 
     http.end();
 
     return false;
   }
 
-  String response = http.getString();
+  String response =
+    http.getString();
 
-  Serial.println("BACKEND RESPONSE:");
-  Serial.println(response);
+  Serial.println(
+    "Terminal response received."
+  );
+
+  Serial.print("Free heap after HTTP response: ");
+  Serial.println(ESP.getFreeHeap());
+
+  bool result =
+    parseTerminalData(response);
 
   http.end();
 
-  // Backend returned a successful employee lookup
-  return true;
+  if (result)
+  {
+    Serial.print("Terminal JSON parsed successfully. Free heap: ");
+    Serial.println(ESP.getFreeHeap());
+  }
+
+  return result;
 }
 
-void setup() {
 
+// =====================================================
+// SEND RFID ATTENDANCE
+// =====================================================
+
+bool sendAttendance(
+  String uid,
+  int& employeeDatabaseId
+)
+{
+  HTTPClient http;
+
+  http.begin(
+    ATTENDANCE_URL
+  );
+
+  http.setTimeout(10000);
+
+  http.addHeader(
+    "Content-Type",
+    "application/json"
+  );
+
+  http.addHeader(
+    "Accept",
+    "application/json"
+  );
+
+  String json =
+    "{\"rfid_uid\":\"" +
+    uid +
+    "\",\"event\":\"IN\"}";
+
+  Serial.println();
+  Serial.println(
+    "Sending to WorkforceX:"
+  );
+
+  Serial.println(json);
+
+  Serial.print(
+    "ESP32 IP: "
+  );
+
+  Serial.println(
+    WiFi.localIP()
+  );
+
+  Serial.print(
+    "RSSI: "
+  );
+
+  Serial.println(
+    WiFi.RSSI()
+  );
+
+  Serial.print(
+    "Server: "
+  );
+
+  Serial.println(
+    ATTENDANCE_URL
+  );
+
+  int httpCode =
+    http.POST(json);
+
+  Serial.print(
+    "HTTP Response: "
+  );
+
+  Serial.println(httpCode);
+
+  if (httpCode != 200)
+  {
+    Serial.println(
+      "HTTP CONNECTION / BACKEND ERROR"
+    );
+
+    http.end();
+
+    return false;
+  }
+
+  String response =
+    http.getString();
+
+  Serial.println(
+    "Backend response:"
+  );
+
+  Serial.println(response);
+
+
+  DynamicJsonDocument doc(4096);
+
+  DeserializationError error =
+    deserializeJson(
+      doc,
+      response
+    );
+
+  if (error)
+  {
+    Serial.println(
+      "Attendance JSON ERROR"
+    );
+
+    http.end();
+
+    return false;
+  }
+
+  bool success =
+    doc["success"] | false;
+
+  if (!success)
+  {
+    http.end();
+
+    return false;
+  }
+
+  employeeDatabaseId =
+    doc["employee"]["id"] | 0;
+
+  employeeId =
+    doc["employee"]["employee_id"] | "";
+
+  employeeName =
+    doc["employee"]["name"] | "";
+
+  employeeRFID =
+    doc["employee"]["rfid_uid"] | uid;
+
+  employeeAvailability =
+    doc["employee"]["availability"] | "";
+
+  attendanceEvent =
+    doc["event"] | "";
+
+  attendanceTimestamp =
+    doc["timestamp"] | "";
+
+  http.end();
+
+  return (
+    employeeDatabaseId > 0
+  );
+}
+
+
+// =====================================================
+// STATUS OUTPUTS
+// =====================================================
+
+void accessGrantedSignal()
+{
+  digitalWrite(GREEN_LED, HIGH);
+  digitalWrite(RED_LED, LOW);
+
+  // Short confirmation beep
+  digitalWrite(BUZZER, HIGH);
+  delay(120);
+  digitalWrite(BUZZER, LOW);
+}
+
+void accessDeniedSignal()
+{
+  digitalWrite(GREEN_LED, LOW);
+  digitalWrite(RED_LED, HIGH);
+}
+
+void statusIdle()
+{
+  digitalWrite(GREEN_LED, LOW);
+  digitalWrite(RED_LED, LOW);
+  digitalWrite(BUZZER, LOW);
+}
+
+
+// =====================================================
+// SETUP
+// =====================================================
+
+void setup()
+{
   Serial.begin(115200);
 
+  delay(500);
+
+  // Status LED and buzzer setup
   pinMode(GREEN_LED, OUTPUT);
   pinMode(RED_LED, OUTPUT);
   pinMode(BUZZER, OUTPUT);
 
-  digitalWrite(GREEN_LED, LOW);
-  digitalWrite(RED_LED, LOW);
-  digitalWrite(BUZZER, LOW);
+  statusIdle();
+
+  // SPI chip-select setup
+  pinMode(
+    RFID_SS,
+    OUTPUT
+  );
+
+  pinMode(
+    TFT_CS,
+    OUTPUT
+  );
+
+  digitalWrite(
+    RFID_SS,
+    HIGH
+  );
+
+  digitalWrite(
+    TFT_CS,
+    HIGH
+  );
+
 
   // SPI
-  SPI.begin(18, 19, 23);
+  SPI.begin(
+    SPI_SCK,
+    SPI_MISO,
+    SPI_MOSI
+  );
 
-  // RFID
-  pinMode(RFID_SS, OUTPUT);
-  digitalWrite(RFID_SS, HIGH);
+
+  // TFT
+  selectTFT();
+
+  tft.initR(
+    INITR_BLACKTAB
+  );
+
+  tft.setRotation(1);
+
+  tft.fillScreen(
+    ST77XX_BLACK
+  );
+
+  deselectTFT();
+
+
+  // RC522
+  selectRFID();
 
   rfid.PCD_Init();
 
+  delay(50);
+
+  deselectRFID();
+
   Serial.println();
-  Serial.println("==============================");
-  Serial.println("WORKFORCEX RFID ACCESS");
-  Serial.println("==============================");
+  Serial.println(
+    "================================"
+  );
 
-  connectWiFi();
+  Serial.println(
+    "WORKFORCEX HARDWARE TERMINAL"
+  );
 
-  Serial.println("RFID READY");
-  Serial.println("SCAN YOUR CARD");
+  Serial.println(
+    "================================"
+  );
+
+
+  // Wi-Fi
+  showHome();
+
+  WiFi.begin(
+    WIFI_SSID,
+    WIFI_PASSWORD
+  );
+
+  Serial.print(
+    "Connecting Wi-Fi"
+  );
+
+  while (
+    WiFi.status() != WL_CONNECTED
+  )
+  {
+    delay(500);
+
+    Serial.print(".");
+  }
+
+  Serial.println();
+
+  Serial.println(
+    "Wi-Fi connected"
+  );
+
+  Serial.print(
+    "ESP32 IP: "
+  );
+
+  Serial.println(
+    WiFi.localIP()
+  );
+
+  Serial.print(
+    "Backend: "
+  );
+
+  Serial.println(
+    SERVER_IP
+  );
+
+  showHome();
 }
 
-void loop() {
 
-  // No card
-  if (!rfid.PICC_IsNewCardPresent()) {
+// =====================================================
+// LOOP
+// =====================================================
+
+void loop()
+{
+  // -----------------------------------------------
+  // RFID detection
+  // -----------------------------------------------
+
+  selectRFID();
+
+  if (
+    !rfid.PICC_IsNewCardPresent()
+  )
+  {
+    deselectRFID();
+
     return;
   }
 
-  // Cannot read card
-  if (!rfid.PICC_ReadCardSerial()) {
+  if (
+    !rfid.PICC_ReadCardSerial()
+  )
+  {
+    deselectRFID();
+
     return;
   }
 
-  // Build UID
+
+  // -----------------------------------------------
+  // UID
+  // -----------------------------------------------
+
   String uid = "";
 
-  for (byte i = 0; i < rfid.uid.size; i++) {
-
-    if (rfid.uid.uidByte[i] < 0x10) {
+  for (
+    byte i = 0;
+    i < rfid.uid.size;
+    i++
+  )
+  {
+    if (
+      rfid.uid.uidByte[i] < 0x10
+    )
+    {
       uid += "0";
     }
 
-    uid += String(rfid.uid.uidByte[i], HEX);
+    uid += String(
+      rfid.uid.uidByte[i],
+      HEX
+    );
 
-    if (i < rfid.uid.size - 1) {
+    if (
+      i < rfid.uid.size - 1
+    )
+    {
       uid += ":";
     }
   }
 
   uid.toUpperCase();
 
+  deselectRFID();
+
+
   Serial.println();
-  Serial.println("==============================");
-  Serial.println("RFID DETECTED");
-  Serial.print("UID: ");
+  Serial.println(
+    "================================"
+  );
+
+  Serial.print(
+    "RFID UID: "
+  );
+
   Serial.println(uid);
 
-  beep();
 
-  bool accessGranted = checkAccess(uid);
+  showRFIDDetected(uid);
 
-  if (accessGranted) {
 
-    Serial.println("ACCESS GRANTED");
+  // -----------------------------------------------
+  // Attendance
+  // -----------------------------------------------
 
-    digitalWrite(RED_LED, LOW);
-    digitalWrite(GREEN_LED, HIGH);
+  int employeeDatabaseId = 0;
 
-    delay(3000);
+  bool attendanceOK =
+    sendAttendance(
+      uid,
+      employeeDatabaseId
+    );
 
-    digitalWrite(GREEN_LED, LOW);
 
-  } else {
+  if (!attendanceOK)
+  {
+    accessDeniedSignal();
+    showHome();
 
-    Serial.println("ACCESS DENIED");
+    selectRFID();
 
-    digitalWrite(GREEN_LED, LOW);
-    digitalWrite(RED_LED, HIGH);
+    rfid.PICC_HaltA();
 
-    delay(3000);
+    rfid.PCD_StopCrypto1();
 
-    digitalWrite(RED_LED, LOW);
+    deselectRFID();
+
+    delay(1000);
+
+    return;
   }
 
-  // Stop RFID communication
+
+  Serial.println(
+    "ACCESS: EMPLOYEE IDENTIFIED"
+  );
+
+
+  // -----------------------------------------------
+  // Fetch complete real data
+  // -----------------------------------------------
+
+  bool terminalOK =
+    fetchTerminalData(
+      employeeDatabaseId
+    );
+
+
+  if (!terminalOK)
+  {
+    Serial.println(
+      "Terminal data request failed."
+    );
+
+    accessDeniedSignal();
+    showHome();
+
+    selectRFID();
+
+    rfid.PICC_HaltA();
+
+    rfid.PCD_StopCrypto1();
+
+    deselectRFID();
+
+    delay(1000);
+
+    return;
+  }
+
+
+  employeeLoaded = true;
+
+
+  // -----------------------------------------------
+  // Access screen
+  // -----------------------------------------------
+
+  accessGrantedSignal();
+  showAccessGranted();
+
+  delay(1800);
+
+
+  // -----------------------------------------------
+  // Page cycle
+  // -----------------------------------------------
+
+  currentPage = 0;
+
+  lastPageChange =
+    millis();
+
+  showCurrentPage();
+
+
+  while (
+    employeeLoaded
+  )
+  {
+    if (
+      millis() -
+      lastPageChange >=
+      PAGE_INTERVAL
+    )
+    {
+      lastPageChange =
+        millis();
+
+      currentPage++;
+
+      if (
+        currentPage > 7
+      )
+      {
+        employeeLoaded = false;
+
+        break;
+      }
+
+      showCurrentPage();
+    }
+
+    delay(20);
+  }
+
+
+  // -----------------------------------------------
+  // Halt RFID
+  // -----------------------------------------------
+
+  selectRFID();
+
   rfid.PICC_HaltA();
+
   rfid.PCD_StopCrypto1();
 
-  delay(1000);
+  deselectRFID();
 
-  Serial.println("READY FOR NEXT SCAN");
+
+  // -----------------------------------------------
+  // Return home
+  // -----------------------------------------------
+
+  delay(500);
+
+  statusIdle();
+  showHome();
+
+  delay(500);
 }
