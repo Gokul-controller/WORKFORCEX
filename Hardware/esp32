@@ -1,0 +1,6 @@
+The ESP32 is a powerful and low-cost microcontroller with built-in Wi-Fi and Bluetooth
+connectivity. It is widely used in IoT applications for wireless data communication and
+remote monitoring. Its compact design, multiple communication interfaces, and low power
+consumption make it suitable for connected embedded systems. In this project, it enables
+wireless communication between the embedded system and the workforce management
+dashboard.
