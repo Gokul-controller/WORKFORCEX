@@ -46,7 +46,7 @@
     })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WORKFORCE AI â€” Digital Twin & Skill Deployment</title>
+  <title>WORKFORCE AI — Digital Twin & Skill Deployment</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -1628,7 +1628,7 @@
     }
 
     .reason-point::before {
-      content: 'â€¢';
+      content: '•';
       color: var(--accent-steel);
       font-weight: bold;
     }
@@ -3293,7 +3293,7 @@
             placeholder="Search workers, projects, tasks, skills..." 
             autocomplete="off"
           />
-          <div class="search-shortcut">âŒ˜K</div>
+          <div class="search-shortcut">⌘K</div>
         </div>
 
         <div class="topbar-actions">
@@ -3334,7 +3334,7 @@
               <line x1="12" y1="8" x2="12" y2="12"></line>
               <line x1="12" y1="16" x2="12.01" y2="16"></line>
             </svg>
-            <span><strong>BACKEND OFFLINE:</strong> Could not reach <code>http://127.0.0.1:8000</code>. Showing empty state until the API is reachable â€” no synthetic data is generated.</span>
+            <span><strong>BACKEND OFFLINE:</strong> Could not reach <code>http://127.0.0.1:8000</code>. Showing empty state until the API is reachable — no synthetic data is generated.</span>
           </div>
           <button class="btn btn-secondary" onclick="fetchDashboardData()" style="height: 24px; font-size: 10.5px; padding: 0 8px;">Retry Sync</button>
         </div>
@@ -3604,7 +3604,7 @@
                 </div>
                 <div class="panel-actions">
                   <button class="btn btn-secondary" onclick="navigateView('projects')" style="height: 28px; font-size: 11px; padding: 0 8px;">
-                    <span>View All Projects â†’</span>
+                    <span>View All Projects →</span>
                   </button>
                 </div>
               </div>
@@ -3897,7 +3897,7 @@
               </button>
               <button class="btn btn-primary" onclick="navigateView('ai-allocation')">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                <span>AI Allocation Engine â†’</span>
+                <span>AI Allocation Engine →</span>
               </button>
             </div>
           </div>
@@ -3973,13 +3973,13 @@
           <div class="page-header">
             <div class="header-text">
               <h1>AI Allocation</h1>
-              <p>AI-driven task staffing â€” evaluate skill matches, workload distribution, and approve optimal allocations.</p>
+              <p>AI-driven task staffing — evaluate skill matches, workload distribution, and approve optimal allocations.</p>
             </div>
             <div class="header-controls">
               <div class="mode-toggle-group">
                 <button type="button" class="mode-toggle-btn active" id="btn-mode-allocations" onclick="switchAiMode('allocations')">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-                  <span>âœ¦ AI Task Allocations</span>
+                  <span>✦ AI Task Allocations</span>
                 </button>
                 <button type="button" class="mode-toggle-btn" id="btn-mode-team" onclick="switchAiMode('team')">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -4006,14 +4006,30 @@
                 <div>
                   <div style="font-weight: 700; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent-steel);">Enterprise Human-in-the-Loop Protocol</div>
                   <div style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;">
-                    <span class="badge-sub blue" style="padding: 1px 6px;">AI RECOMMENDS</span> &nbsp;â†’&nbsp;
-                    <span class="badge-sub purple" style="padding: 1px 6px;">MANAGER REVIEWS</span> &nbsp;â†’&nbsp;
-                    <span class="badge-sub green" style="padding: 1px 6px;">MANAGER APPROVES</span> &nbsp;â†’&nbsp;
+                    <span class="badge-sub blue" style="padding: 1px 6px;">AI RECOMMENDS</span> &nbsp;→&nbsp;
+                    <span class="badge-sub purple" style="padding: 1px 6px;">MANAGER REVIEWS</span> &nbsp;→&nbsp;
+                    <span class="badge-sub green" style="padding: 1px 6px;">MANAGER APPROVES</span> &nbsp;→&nbsp;
                     <span class="badge-sub gray" style="padding: 1px 6px;">TASK ASSIGNED</span>
                   </div>
                 </div>
               </div>
               <div style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">Real backend scoring &bull; No blind auto-assign</div>
+            </div>
+
+            <!-- LIVE DYNAMIC AI REALLOCATION -->
+            <div id="live-reallocation-panel" style="background: linear-gradient(135deg, var(--bg-surface), rgba(59,130,246,0.045)); border: 1px solid rgba(59,130,246,0.28); border-radius: var(--radius-md); padding: 15px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap;">
+              <div style="display:flex;align-items:center;gap:12px;min-width:280px;">
+                <div id="live-reallocation-dot" style="width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 5px rgba(34,197,94,.10);"></div>
+                <div>
+                  <div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-steel);">LIVE DYNAMIC REALLOCATION</div>
+                  <div id="live-reallocation-message" style="font-size:12px;color:var(--text-secondary);margin-top:3px;">Monitoring real workforce state from the backend.</div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+                <div><div style="font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;">Last evaluation</div><div id="live-reallocation-last" style="font-size:11px;font-family:var(--font-mono);color:var(--text-primary);margin-top:2px;">--</div></div>
+                <div><div style="font-size:9px;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em;">Moved</div><div id="live-reallocation-count" style="font-size:16px;font-weight:800;color:var(--text-primary);margin-top:1px;">0</div></div>
+                <button type="button" class="btn btn-secondary" onclick="runLiveReallocationNow()" style="height:31px;font-size:10px;">Re-evaluate Now</button>
+              </div>
             </div>
 
             <div class="filter-bar-wrap">
@@ -4132,7 +4148,7 @@
                 </div>
                 <button type="button" class="btn btn-primary" id="btn-generate-ai-team" onclick="generateAiTeam()" style="height: 38px; padding: 0 18px; font-size: 12.5px; white-space: nowrap; flex-shrink: 0;">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  <span>âœ¦ Generate AI Team</span>
+                  <span>✦ Generate AI Team</span>
                 </button>
               </div>
             </div>
@@ -4149,11 +4165,11 @@
             <!-- State 2: Generating Loading State -->
             <div id="ai-team-generating-state" class="ai-generating-box" style="display: none;">
               <div class="spinner" style="width: 36px; height: 36px; border-width: 3px;"></div>
-              <div style="font-size: 14px; font-weight: 700; color: var(--text-primary);">Querying backend for real tasks, employees, workloads and match scoresâ€¦</div>
+              <div style="font-size: 14px; font-weight: 700; color: var(--text-primary);">Querying backend for real tasks, employees, workloads and match scores…</div>
               <div class="ai-telemetry-steps">
                 <div class="ai-telemetry-step active" id="tel-step-1"><span class="ai-telemetry-dot pulsing"></span><span>1. Loading open project tasks</span></div>
                 <div class="ai-telemetry-step" id="tel-step-2"><span class="ai-telemetry-dot"></span><span>2. Loading current employee roster</span></div>
-                <div class="ai-telemetry-step" id="tel-step-3"><span class="ai-telemetry-dot"></span><span>3. Calling /ai/projects/{id}/allocate</span></div>
+                <div class="ai-telemetry-step" id="tel-step-3"><span class="ai-telemetry-dot"></span><span>3. Reading /ai/allocations</span></div>
                 <div class="ai-telemetry-step" id="tel-step-4"><span class="ai-telemetry-dot"></span><span>4. Pulling live workload from /ai/workloads</span></div>
                 <div class="ai-telemetry-step" id="tel-step-5"><span class="ai-telemetry-dot"></span><span>5. Reading alternates from /ai/projects/{id}/allocation-preview</span></div>
               </div>
@@ -4165,11 +4181,11 @@
               <!-- Top Executive AI Telemetry Bar -->
               <div class="ai-kpi-row">
                 
-                <!-- Match Score Card (averages the real overall_score returned by /ai/projects/{id}/allocate) -->
+                <!-- Match Score Card (averages the real overall_score returned by /ai/allocations) -->
                 <div class="ai-score-card">
                   <div class="ai-score-top">
                     <span class="project-meta-label">Avg. Match Score</span>
-                    <span class="badge-sub blue" style="font-size: 10px;" id="ai-team-score-badge">FROM /ai/projects/:id/allocate</span>
+                    <span class="badge-sub blue" style="font-size: 10px;" id="ai-team-score-badge">FROM /ai/allocations</span>
                   </div>
                   <div class="ai-score-main">
                     <div class="ai-score-dial" id="ai-team-dial">
@@ -4196,11 +4212,11 @@
                   </div>
                 </div>
 
-                <!-- Team Health Card â€” badges derived from the real numbers above, no invented AI percentages -->
+                <!-- Team Health Card — badges derived from the real numbers above, no invented AI percentages -->
                 <div class="ai-score-card">
                   <div class="ai-score-top">
                     <span class="project-meta-label">Team Health</span>
-                    <span class="ai-health-status-badge good" id="ai-health-overall-badge">â— Evaluating</span>
+                    <span class="ai-health-status-badge good" id="ai-health-overall-badge">● Evaluating</span>
                   </div>
                   <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 6px;">
                     <span class="ai-health-status-badge good" id="ai-health-badge-coverage">Task Coverage: --</span>
@@ -4219,7 +4235,7 @@
                   </div>
                 </div>
 
-                <!-- Project Analysis Card â€” real counts only -->
+                <!-- Project Analysis Card — real counts only -->
                 <div class="ai-score-card">
                   <div class="ai-score-top">
                     <span class="project-meta-label">Project Analysis</span>
@@ -4234,7 +4250,7 @@
                     <div><span style="color: var(--text-muted);">Deadline Risk:</span> <strong style="color: var(--status-success);" id="ai-analysis-risk">--</strong></div>
                   </div>
                   <p style="margin: 6px 0 0 0; font-size: 11px; color: var(--text-secondary); line-height: 1.45; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 8px;">
-                    Every figure on this card is computed from live backend data â€” no simulated scoring.
+                    Every figure on this card is computed from live backend data — no simulated scoring.
                   </p>
                 </div>
               </div>
@@ -4273,7 +4289,7 @@
                   </div>
                   <button type="button" class="btn btn-primary" id="btn-approve-entire-team" onclick="approveEntireAiTeam()" style="height: 38px; padding: 0 20px; font-size: 13px; font-weight: 600;">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>âœ“ Approve Entire AI Team</span>
+                    <span>✓ Approve Entire AI Team</span>
                   </button>
                 </div>
               </div>
@@ -4326,7 +4342,7 @@
                   <div class="panel-header">
                     <div class="panel-title">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-                      <span>Project â†’ Task â†’ Role â†’ Worker Architecture</span>
+                      <span>Project → Task → Role → Worker Architecture</span>
                     </div>
                   </div>
                   <div style="padding: 16px; overflow-x: auto;">
@@ -4362,7 +4378,7 @@
                   <div style="padding: 20px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                       <span style="font-size: 12px; font-weight: 600; color: var(--text-primary);">Sprint Execution Roadmap</span>
-                      <span style="font-size: 11.5px; color: var(--accent-steel); font-family: var(--font-mono);" id="ai-timeline-dates">05 Sep 2026 â†’ 23 Sep 2026 (Deadline: 30 Sep)</span>
+                      <span style="font-size: 11.5px; color: var(--accent-steel); font-family: var(--font-mono);" id="ai-timeline-dates">05 Sep 2026 → 23 Sep 2026 (Deadline: 30 Sep)</span>
                     </div>
                     
                     <div class="ai-timeline-phases" id="ai-timeline-phases-container">
@@ -4602,7 +4618,7 @@
               </div>
 
               <div style="font-size: 11px; color: var(--text-dim); border-top: 1px solid var(--border-subtle); padding-top: 10px;">
-                Optimal operational bandwidth target: <strong>70% â€“ 85%</strong>.
+                Optimal operational bandwidth target: <strong>70% – 85%</strong>.
               </div>
             </div>
 
@@ -4647,7 +4663,7 @@
                   <span id="rep-perf-rating" style="font-family: var(--font-mono); font-weight: 600;">High Efficiency</span>
                 </div>
                 <div class="report-bar-track">
-                  <div class="report-bar-fill" id="rep-perf-bar" style="width: 90%; background: linear-gradient(90deg, #3B82F6, #10B981);"></div>
+                  <div class="report-bar-fill" id="rep-perf-bar" style="width: 0%; background: linear-gradient(90deg, #3B82F6, #10B981);"></div>
                 </div>
               </div>
               <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 4px;">
@@ -4750,7 +4766,7 @@
           <div class="page-header">
             <div class="header-text">
               <h1>Digital Twin</h1>
-              <p>Individual workforce telemetric twin â€” verified skills, live state, execution history, and AI insights.</p>
+              <p>Individual workforce telemetric twin — verified skills, live state, execution history, and AI insights.</p>
             </div>
             <div class="header-controls">
               <div style="display: flex; align-items: center; gap: 8px;">
@@ -4962,7 +4978,7 @@
         </div>
       </div>
 
-      <!-- 2. Skills (Existing skills only â€” no invented proficiency) -->
+      <!-- 2. Skills (Existing skills only — no invented proficiency) -->
       <div class="drawer-section">
         <div class="section-headline">
           <span>Skills</span>
@@ -5088,6 +5104,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       initTimeAndGreeting();
       fetchDashboardData();
+      startLiveReallocationTelemetry();
       initKeyboardShortcuts();
 
       const hash = window.location.hash.replace('#', '').toLowerCase();
@@ -5158,6 +5175,72 @@
       if (greetingEl) greetingEl.textContent = greeting;
     }
 
+    let liveReallocationLastRun = null;
+    let liveReallocationLastCount = 0;
+
+    function formatLiveTime(value) {
+      if (!value) return '--';
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) return value;
+      return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+
+    async function pollLiveReallocationStatus() {
+      try {
+        const res = await fetch(`${API_BASE_URL}/ai/reallocation/live-status`, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const dot = document.getElementById('live-reallocation-dot');
+        const msg = document.getElementById('live-reallocation-message');
+        const last = document.getElementById('live-reallocation-last');
+        const count = document.getElementById('live-reallocation-count');
+        if (!dot || !msg || !last || !count) return;
+
+        const enabled = !!data.enabled;
+        dot.style.background = enabled ? '#22c55e' : '#f59e0b';
+        dot.style.boxShadow = enabled ? '0 0 0 5px rgba(34,197,94,.10)' : '0 0 0 5px rgba(245,158,11,.10)';
+        msg.textContent = enabled
+          ? `Automatic evaluation every ${data.interval_seconds}s. Only real PENDING tasks are eligible for movement.`
+          : 'Automatic reallocation is disabled by server configuration.';
+        last.textContent = formatLiveTime(data.last_run_at);
+        count.textContent = String(data.last_reallocated_count ?? 0);
+
+        if (data.last_run_at && data.last_run_at !== liveReallocationLastRun) {
+          const newCount = Number(data.last_reallocated_count || 0);
+          if (liveReallocationLastRun && newCount !== liveReallocationLastCount) {
+            await fetchDashboardData();
+          }
+          liveReallocationLastRun = data.last_run_at;
+          liveReallocationLastCount = newCount;
+        }
+      } catch (e) {
+        const msg = document.getElementById('live-reallocation-message');
+        if (msg) msg.textContent = 'Live reallocation monitor unavailable; waiting for backend connection.';
+      }
+    }
+
+    function startLiveReallocationTelemetry() {
+      pollLiveReallocationStatus();
+      window.setInterval(pollLiveReallocationStatus, 5000);
+    }
+
+    async function runLiveReallocationNow() {
+      const btn = document.querySelector('#live-reallocation-panel button');
+      if (btn) { btn.disabled = true; btn.textContent = 'Evaluating...'; }
+      try {
+        const res = await fetch(`${API_BASE_URL}/ai/reallocation/run`, { method: 'POST', cache: 'no-store' });
+        const data = await res.json();
+        if (!res.ok || data.error) throw new Error(data.message || `HTTP ${res.status}`);
+        await fetchDashboardData();
+        await pollLiveReallocationStatus();
+      } catch (e) {
+        console.error('Live reallocation failed:', e);
+        alert(`Dynamic reallocation failed: ${e.message}`);
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = 'Re-evaluate Now'; }
+      }
+    }
+
     async function fetchDashboardData() {
       updateTelemetryStatus('connecting', 'API: CONNECTING', '--');
       const startTime = performance.now();
@@ -5165,14 +5248,20 @@
       try {
         const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Network timeout')), 5000));
 
-        const fetchEmployees = fetch(`${API_BASE_URL}/employees`, { cache: 'no-store' }).then(r => r.ok ? r.json() : []);
-        const fetchSkills = fetch(`${API_BASE_URL}/employee_skills`, { cache: 'no-store' }).then(r => r.ok ? r.json() : []).catch(() => []);
-        const fetchProjects = fetch(`${API_BASE_URL}/projects`, { cache: 'no-store' }).then(r => r.ok ? r.json() : []);
-        const fetchTasks = fetch(`${API_BASE_URL}/tasks`, { cache: 'no-store' }).then(r => r.ok ? r.json() : []).catch(() => []);
-        const fetchSkillTaxonomy = fetch(`${API_BASE_URL}/skills`, { cache: 'no-store' }).then(r => r.ok ? r.json() : []).catch(() => []);
-        const fetchAssignments = fetch(`${API_BASE_URL}/assignments`, { cache: 'no-store' }).then(r => r.ok ? r.json() : []).catch(() => []);
-        const fetchHistory = fetch(`${API_BASE_URL}/task_history`, { cache: 'no-store' }).then(r => r.ok ? r.json() : []).catch(() => []);
-        const fetchWorkloads = fetch(`${API_BASE_URL}/ai/workloads`, { cache: 'no-store' }).then(r => r.ok ? r.json() : []).catch(() => []);
+        const getJson = async (path) => {
+          const response = await fetch(`${API_BASE_URL}${path}`, { cache: 'no-store' });
+          if (!response.ok) throw new Error(`${path} returned HTTP ${response.status}`);
+          return response.json();
+        };
+
+        const fetchEmployees = getJson('/employees');
+        const fetchSkills = getJson('/employee_skills');
+        const fetchProjects = getJson('/projects');
+        const fetchTasks = getJson('/tasks');
+        const fetchSkillTaxonomy = getJson('/skills');
+        const fetchAssignments = getJson('/assignments');
+        const fetchHistory = getJson('/task_history');
+        const fetchWorkloads = getJson('/ai/workloads');
 
         const [empData, skillsData, prjData, tasksData, skillTaxData, assignData, histData, wlData] = await Promise.race([
           Promise.all([fetchEmployees, fetchSkills, fetchProjects, fetchTasks, fetchSkillTaxonomy, fetchAssignments, fetchHistory, fetchWorkloads]),
@@ -5190,7 +5279,7 @@
         rawAssignments = Array.isArray(assignData) ? assignData : [];
         rawTaskHistory = Array.isArray(histData) ? histData : [];
         rawAiWorkloads = Array.isArray(wlData) ? wlData : [];
-        aiAllocationsLoaded = false; // tasks/employees just refreshed â€” recompute AI matches next visit
+        aiAllocationsLoaded = false; // tasks/employees just refreshed — recompute AI matches next visit
 
         document.getElementById('offline-alert')?.classList.remove('visible');
         updateTelemetryStatus('online', 'API: CONNECTED', `${latency} ms`);
@@ -5231,7 +5320,7 @@
     // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------
     // Shared data-driven helpers (no fabricated values anywhere below).
-    // pickField() reads the first present key from a backend object â€” used
+    // pickField() reads the first present key from a backend object — used
     // because we render whatever field names the backend actually returns,
     // instead of assuming a single hardcoded shape.
     // -------------------------------------------------------------------------
@@ -5247,7 +5336,7 @@
       return Math.round(Number(v));
     }
 
-    // GET /ai/workloads â€” cached per session, invalidated after any assignment
+    // GET /ai/workloads — cached per session, invalidated after any assignment
     // change so real workload numbers are re-pulled instead of guessed.
     let workloadsCache = null;
     async function fetchAllWorkloads(forceRefresh) {
@@ -5278,12 +5367,12 @@
 
     // -------------------------------------------------------------------------
     // Project-level AI allocation fetchers.
-    // Source of truth: GET /ai/projects/{project_id}/allocate (authoritative,
+    // Source of truth: GET /ai/allocations (authoritative,
     // already-computed allocation for that project) and GET
     // /ai/projects/{project_id}/allocation-preview (ranked candidate preview,
-    // used only to surface alternates â€” never as the primary allocation).
+    // used only to surface alternates — never as the primary allocation).
     // Deliberately does NOT read /assignments and does NOT recompute matches
-    // client-side via /ai/match â€” the backend's own allocation is displayed
+    // client-side via /ai/match — the backend's own allocation is displayed
     // as-is. Responses are read tolerantly via pickField() because the exact
     // field names/shape returned by these endpoints were not specified; if
     // the backend later documents exact field names, narrow the key lists
@@ -5306,14 +5395,36 @@
     async function fetchProjectAllocation(projectId, forceRefresh) {
       if (!forceRefresh && projectAllocationCache[projectId]) return projectAllocationCache[projectId];
       try {
-        const res = await fetch(`${API_BASE_URL}/ai/projects/${projectId}/allocate`, { cache: 'no-store' });
-        if (!res.ok) { projectAllocationCache[projectId] = []; return []; }
+        // Read-only recommendation matrix. Never call the write endpoint from
+        // a dashboard render.
+        const res = await fetch(`${API_BASE_URL}/ai/allocations`, { cache: 'no-store' });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        const list = normalizeAllocationResponse(data);
+        const rows = Array.isArray(data) ? data.filter(x => Number(x.project_id) === Number(projectId)) : [];
+        const list = rows.map(x => {
+          const best = x.recommended_employee;
+          return {
+            task_id: x.task_id,
+            task_name: x.task_name,
+            project_id: x.project_id,
+            project_name: x.project_name,
+            priority: x.priority,
+            deadline: x.deadline,
+            employee_db_id: best ? best.employee_id : null,
+            employee_code: best ? best.employee_code : null,
+            employee_name: best ? best.name : null,
+            skill_match_percent: best ? best.skill_match_percent : null,
+            workload_percent: best ? best.workload_percent : null,
+            workload_label: best ? best.workload_label : null,
+            overall_score: best ? best.overall_score : null,
+            recommendation: best ? best.recommendation : 'NO_ELIGIBLE_MATCH',
+            reason: best ? best.reason : 'No eligible project member found.'
+          };
+        });
         projectAllocationCache[projectId] = list;
         return list;
       } catch (e) {
-        console.warn(`/ai/projects/${projectId}/allocate fetch failed:`, e.message);
+        console.warn(`/ai/allocations fetch failed for project ${projectId}:`, e.message);
         projectAllocationCache[projectId] = [];
         return [];
       }
@@ -5336,7 +5447,7 @@
     }
 
     // Reshapes one raw allocation entry into a flat record. Every value is
-    // read directly from the backend response via pickField â€” nothing here
+    // read directly from the backend response via pickField — nothing here
     // is invented or defaulted to demo data. A field the backend didn't
     // return stays null and is rendered as an empty state, never guessed.
     function extractAllocationRecord(entry) {
@@ -5374,98 +5485,86 @@
     }
 
     // AI Allocation candidate computation for the "AI Task Allocations" table.
-    // Source of truth: GET /ai/projects/{project_id}/allocate per project â€”
+    // Source of truth: GET /ai/allocations filtered by project —
     // the backend's own authoritative allocation, not a client-side
     // recomputation. Deliberately does NOT read /assignments (stale
-    // demo/test records). Read-only â€” never assigns anything; the manager
+    // demo/test records). Read-only — never assigns anything; the manager
     // still approves via the existing assignment UI/endpoint.
     // -------------------------------------------------------------------------
     let aiAllocationsLoaded = false;
 
     async function computeAiAllocations() {
-      const projectIds = Array.from(new Set(
-        (Array.isArray(processedProjects) ? processedProjects : [])
-          .map(p => p.id)
-          .filter(id => id !== null && id !== undefined)
-      ));
+      // Read-only source of truth. This endpoint evaluates the live database
+      // and NEVER performs assignments, so refreshing the dashboard is safe.
+      const res = await fetch(`${API_BASE_URL}/ai/allocations`, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`AI allocation API HTTP ${res.status}`);
+      const backendRows = await res.json();
 
-      const perProjectResults = await Promise.all(projectIds.map(async (pid) => {
-        const [allocationList, previewList] = await Promise.all([
-          fetchProjectAllocation(pid),
-          fetchProjectAllocationPreview(pid)
-        ]);
+      rawAiAllocations = (Array.isArray(backendRows) ? backendRows : []).map(alloc => {
+        const best = alloc.recommended_employee || null;
+        const alternatives = Array.isArray(alloc.alternatives) ? alloc.alternatives : [];
+        const projectMeta = (processedProjects || []).find(p => Number(p.id) === Number(alloc.project_id));
+        const worker = best ? resolveAllocatedWorker({
+          employeeDbId: best.employee_id,
+          employeeCode: best.employee_code
+        }) : null;
 
-        const previewRecords = previewList.map(extractAllocationRecord).filter(Boolean);
-        const projectMeta = (processedProjects || []).find(p => Number(p.id) === Number(pid));
-
-        return allocationList.map(entry => {
-          const rec = extractAllocationRecord(entry);
-          if (!rec) return null;
-          const worker = resolveAllocatedWorker(rec);
-
-          const alternatives = previewRecords
-            .filter(r => String(r.taskId) === String(rec.taskId) &&
-              !(rec.employeeDbId != null && String(r.employeeDbId) === String(rec.employeeDbId)) &&
-              !(rec.employeeCode != null && String(r.employeeCode) === String(rec.employeeCode)))
-            .slice(0, 5)
-            .map(r => {
-              const altWorker = resolveAllocatedWorker(r);
-              return {
-                employee_db_id: r.employeeDbId ?? (altWorker ? altWorker.dbId : null),
-                employee_code: r.employeeCode ?? (altWorker ? altWorker.id : null),
-                name: r.employeeName || (altWorker ? altWorker.name : null),
-                skill_match_percent: r.skillMatchPercent,
-                workload_percent: r.workloadPercent,
-                workload_label: r.workloadLabel,
-                overall_score: r.overallScore,
-                recommendation: r.recommendation,
-                reason: r.reason
-              };
-            });
-
-          return {
-            task_id: rec.taskId,
-            task_name: rec.taskName,
-            project_id: rec.projectId ?? pid,
-            project_name: rec.projectName || (projectMeta ? projectMeta.name : null),
-            priority: rec.priority,
-            deadline: rec.deadline,
-            // Flat fields consumed by the AI Allocation table:
-            employee_name: rec.employeeName || (worker ? worker.name : null),
-            employee_code: rec.employeeCode || (worker ? worker.id : null),
-            employee_db_id: rec.employeeDbId || (worker ? worker.dbId : null),
-            skill_match_percent: rec.skillMatchPercent,
-            workload_percent: rec.workloadPercent,
-            workload_label: rec.workloadLabel,
-            recommendation: rec.recommendation || (worker || rec.employeeName ? 'RECOMMENDED' : 'No eligible match'),
-            reason: rec.reason || 'No reason text was returned by the backend for this allocation.',
-            overall_score: rec.overallScore,
-            // Nested fields kept for the Dashboard AI Insights panel:
-            recommended_employee: (worker || rec.employeeName) ? {
-              employee_db_id: rec.employeeDbId || (worker ? worker.dbId : null),
-              employee_code: rec.employeeCode || (worker ? worker.id : null),
-              name: rec.employeeName || (worker ? worker.name : null),
-              role: worker ? worker.role : null,
-              skill_match_percent: rec.skillMatchPercent,
-              workload_percent: rec.workloadPercent,
-              workload_label: rec.workloadLabel,
-              overall_score: rec.overallScore,
-              recommendation: rec.recommendation,
-              reason: rec.reason
-            } : null,
-            alternatives: alternatives
-          };
-        }).filter(Boolean);
-      }));
-
-      rawAiAllocations = perProjectResults.flat();
+        return {
+          task_id: alloc.task_id,
+          task_name: alloc.task_name,
+          project_id: alloc.project_id,
+          project_name: alloc.project_name || (projectMeta ? projectMeta.name : null),
+          priority: alloc.priority,
+          deadline: alloc.deadline,
+          employee_name: best ? best.name : null,
+          employee_code: best ? best.employee_code : null,
+          employee_db_id: best ? best.employee_id : null,
+          skill_match_percent: best ? best.skill_match_percent : null,
+          workload_percent: best ? best.workload_percent : null,
+          workload_label: best ? best.workload_label : null,
+          performance_score: best ? best.performance_score : null,
+          performance_source: best ? best.performance_source : null,
+          recommendation: best ? best.recommendation : 'NO_ELIGIBLE_MATCH',
+          reason: best ? best.reason : 'No active project member currently meets the required skill for this task.',
+          overall_score: best ? best.overall_score : null,
+          assigned_employee: alloc.assigned_employee || null,
+          recommended_employee: best ? {
+            employee_db_id: best.employee_id,
+            employee_code: best.employee_code,
+            name: best.name,
+            role: best.role,
+            skill_match_percent: best.skill_match_percent,
+            workload_percent: best.workload_percent,
+            workload_label: best.workload_label,
+            performance_score: best.performance_score,
+            performance_source: best.performance_source,
+            overall_score: best.overall_score,
+            recommendation: best.recommendation,
+            reason: best.reason
+          } : null,
+          alternatives: alternatives.map(a => ({
+            employee_db_id: a.employee_id,
+            employee_code: a.employee_code,
+            name: a.name,
+            role: a.role,
+            skill_match_percent: a.skill_match_percent,
+            workload_percent: a.workload_percent,
+            workload_label: a.workload_label,
+            performance_score: a.performance_score,
+            performance_source: a.performance_source,
+            overall_score: a.overall_score,
+            recommendation: a.recommendation,
+            reason: a.reason
+          }))
+        };
+      });
       aiAllocationsLoaded = true;
     }
 
     async function loadAndRenderAiAllocations() {
       const body = document.getElementById('ai-allocations-table-body');
       if (body && !aiAllocationsLoaded) {
-        body.innerHTML = '<tr><td colspan="8"><div class="empty-state-box"><p>Calculating AI recommendationsâ€¦</p></div></td></tr>';
+        body.innerHTML = '<tr><td colspan="8"><div class="empty-state-box"><p>Calculating AI recommendations…</p></div></td></tr>';
       }
       try {
         await computeAiAllocations();
@@ -5503,23 +5602,23 @@
         return;
       }
 
-      const val = (o, keys, fallback = 'â€”') => {
+      const val = (o, keys, fallback = '—') => {
         for (const k of keys) if (o?.[k] !== undefined && o[k] !== null && o[k] !== '') return o[k];
         return fallback;
       };
       body.innerHTML = rows.map(a => {
-        const project = val(a, ['project_name', 'projectName', 'project'], 'â€”');
-        const task = val(a, ['task_name', 'taskName', 'task'], 'â€”');
-        const employee = val(a, ['employee_name', 'employeeName', 'assigned_name', 'assignedName'], 'â€”');
-        const score = val(a, ['skill_match_percent', 'match_score', 'matchScore', 'score'], 'â€”');
-        const workload = val(a, ['workload_percent', 'workload'], 'â€”');
-        const recommendation = val(a, ['recommendation', 'status'], 'â€”');
+        const project = val(a, ['project_name', 'projectName', 'project'], '—');
+        const task = val(a, ['task_name', 'taskName', 'task'], '—');
+        const employee = val(a, ['employee_name', 'employeeName', 'assigned_name', 'assignedName'], '—');
+        const score = val(a, ['skill_match_percent', 'match_score', 'matchScore', 'score'], '—');
+        const workload = val(a, ['workload_percent', 'workload'], '—');
+        const recommendation = val(a, ['recommendation', 'status'], '—');
         return `<tr>
           <td>${escapeHtml(String(project))}</td>
           <td>${escapeHtml(String(task))}</td>
           <td>${escapeHtml(String(employee))}</td>
-          <td>${escapeHtml(String(score))}${score !== 'â€”' ? '%' : ''}</td>
-          <td>${escapeHtml(String(workload))}${workload !== 'â€”' ? '%' : ''}</td>
+          <td>${escapeHtml(String(score))}${score !== '—' ? '%' : ''}</td>
+          <td>${escapeHtml(String(workload))}${workload !== '—' ? '%' : ''}</td>
           <td>${escapeHtml(String(recommendation))}</td>
           <td><span class="status-pill">${escapeHtml(String(val(a, ['reason'], 'Backend recommendation')))}</span></td>
         </tr>`;
@@ -5540,9 +5639,9 @@
       body.innerHTML = rows.length ? rows.map(w => {
         const workload = Math.max(0, Math.min(100, Number(w.workload || 0)));
         const cls = workload >= 90 ? 'critical' : workload >= 70 ? 'high' : 'optimal';
-        return `<tr><td>${escapeHtml(w.name || 'â€”')}</td><td>${escapeHtml(w.role || 'â€”')}</td>
-          <td><div class="workload-cell-wrap"><div class="workload-track"><div class="workload-bar-fill ${cls}" style="width:${workload}%"></div></div><span class="workload-text">${workload}%</span></div></td>
-          <td>${escapeHtml(w.status || 'â€”')}</td></tr>`;
+        return `<tr><td>${escapeHtml(w.name || '—')}</td><td>${escapeHtml(w.role || '—')}</td>
+          <td><div class="workload-cell-wrap"><div class="workload-track"><div class="workload-bar-fill ${cls}" style="width:${workload !== null ? `${workload}%` : 'No workload data'}"></div></div><span class="workload-text">${workload !== null ? `${workload}%` : 'No workload data'}</span></div></td>
+          <td>${escapeHtml(w.status || '—')}</td></tr>`;
       }).join('') : '<tr><td colspan="4"><div class="empty-state-box"><p>No workload data available from the backend.</p></div></td></tr>';
     }
 
@@ -5611,9 +5710,9 @@
       }
 
       set('dt-current-project', worker.currentProject || (activeTasks[0] && activeTasks[0].projectName) || 'Unassigned');
-      set('dt-workload', `${workload}%`);
+      set('dt-workload', `${workload !== null ? `${workload}%` : 'No workload data'}`);
       const workloadBar = document.getElementById('dt-workload-bar');
-      if (workloadBar) workloadBar.style.width = `${workload}%`;
+      if (workloadBar) workloadBar.style.width = `${workload !== null ? `${workload}%` : 'No workload data'}`;
       const workloadPill = document.getElementById('dt-workload-status-pill');
       if (workloadPill) {
         const label = workload >= 90 ? 'OVERLOADED' : workload >= 70 ? 'HIGH' : workload >= 40 ? 'MEDIUM' : 'LOW';
@@ -5625,7 +5724,7 @@
       set('dt-skills-count', `${skills.length} Skills`);
       html('dt-skills-list', skills.length ? skills.map(skill => {
         const level = Number(skill.proficiency ?? skill.level ?? 0);
-        return `<div style="display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--border-subtle);font-size:12px;"><span style="color:var(--text-primary);font-weight:600;">${escapeHtml(skill.name || 'Core Skill')}</span><span style="color:var(--accent-steel);font-family:var(--font-mono);">${escapeHtml(String(level))}%</span></div>`;
+        return `<div style="display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--border-subtle);font-size:12px;"><span style="color:var(--text-primary);font-weight:600;">${escapeHtml(skill.name || 'No verified skill name')}</span><span style="color:var(--accent-steel);font-family:var(--font-mono);">${escapeHtml(String(level))}%</span></div>`;
       }).join('') : '<div style="color: var(--text-muted); font-size: 12px;">No verified skills available from the backend.</div>');
 
       const taskList = document.getElementById('dt-active-tasks-list');
@@ -5645,7 +5744,7 @@
       }
       set('dt-completed-tasks-count', `${historyRows.length || completedTasks.length} Completed`);
 
-      html('dt-ai-insights', `<div style="font-size:12px;color:var(--text-secondary);">Workload: <strong style="color:var(--text-primary);">${workload}%</strong></div><div style="font-size:12px;color:var(--text-secondary);">Active tasks: <strong style="color:var(--text-primary);">${activeTasks.length}</strong></div><div style="font-size:12px;color:var(--text-secondary);">Verified skills: <strong style="color:var(--text-primary);">${skills.length}</strong></div><div style="font-size:12px;color:var(--text-secondary);">Availability: <strong style="color:var(--text-primary);">${escapeHtml(worker.status || 'AVAILABLE')}</strong></div>`);
+      html('dt-ai-insights', `<div style="font-size:12px;color:var(--text-secondary);">Workload: <strong style="color:var(--text-primary);">${workload !== null ? `${workload}%` : 'No workload data'}</strong></div><div style="font-size:12px;color:var(--text-secondary);">Active tasks: <strong style="color:var(--text-primary);">${activeTasks.length}</strong></div><div style="font-size:12px;color:var(--text-secondary);">Verified skills: <strong style="color:var(--text-primary);">${skills.length}</strong></div><div style="font-size:12px;color:var(--text-secondary);">Availability: <strong style="color:var(--text-primary);">${escapeHtml(worker.status || 'AVAILABLE')}</strong></div>`);
     }
 
     function onDigitalTwinSelected(value) {
@@ -5663,11 +5762,11 @@
       const rows = Array.isArray(rawTaskHistory) ? rawTaskHistory : [];
       if (count) count.textContent = rows.length;
       body.innerHTML = rows.length ? rows.map(h => `<tr>
-        <td>${escapeHtml(String(h.task_name || h.taskName || h.task_id || 'â€”'))}</td>
-        <td>${escapeHtml(String(h.employee_name || h.employeeName || 'â€”'))}</td>
-        <td>${escapeHtml(String(h.status || h.action || 'â€”'))}</td>
-        <td>${escapeHtml(String(h.notes || h.note || 'â€”'))}</td>
-        <td>${escapeHtml(String(h.created_at || h.timestamp || 'â€”'))}</td>
+        <td>${escapeHtml(String(h.task_name || h.taskName || h.task_id || '—'))}</td>
+        <td>${escapeHtml(String(h.employee_name || h.employeeName || '—'))}</td>
+        <td>${escapeHtml(String(h.status || h.action || '—'))}</td>
+        <td>${escapeHtml(String(h.notes || h.note || '—'))}</td>
+        <td>${escapeHtml(String(h.created_at || h.timestamp || '—'))}</td>
       </tr>`).join('') : '<tr><td colspan="5"><div class="empty-state-box"><p>No task history records available from the backend.</p></div></td></tr>';
     }
 
@@ -5681,8 +5780,8 @@
         if (!empId) return;
         if (!skillMap[empId]) skillMap[empId] = [];
         skillMap[empId].push({
-          name: item.skill_name || item.skill || item.name || 'Core Skill',
-          proficiency: item.skill_level || item.proficiency || item.level || 80
+          name: item.skill_name || item.skill || item.name || null,
+          proficiency: (item.skill_level ?? item.proficiency ?? item.level ?? null)
         });
       });
 
@@ -5690,10 +5789,12 @@
 
       // 1. Process Projects with standard status nomenclature: PLANNED, ONGOING, COMPLETED, ON HOLD, OVERDUE
       processedProjects = rawProjects.map((p, idx) => {
-        const id = p.id || idx + 1;
-        const code = `PRJ-${400 + id}`;
-        const name = p.project_name || p.name || `Project ${id}`;
-        const description = p.description || p.desc || 'Enterprise project';
+        const id = p.id;
+         if (id === null || id === undefined) return null;
+        const code = p.project_code || p.code || null;
+        const name = p.project_name || p.name || null;
+         if (!name) return null;
+        const description = p.description || p.desc || null;
         
         let statusRaw = (p.status || '').toUpperCase().trim();
         let displayStatus = 'ONGOING';
@@ -5719,7 +5820,7 @@
           statusKey = 'ongoing';
         }
 
-        const priority = p.priority || 'Medium';
+        const priority = p.priority || null;
         const deadline = p.deadline || null;
         
         const projectTasks = rawTasks.filter(t => t.project_id === id);
@@ -5730,15 +5831,18 @@
         if (!projectTeams[id]) projectTeams[id] = [];
 
         return { id, code, name, description, status: displayStatus, statusKey, priority, deadline, progress, teamSize: 0, tasks: projectTasks, totalTasks, completedTasks };
-      });
+      }).filter(Boolean);
 
       // 2. Process Workers: strict status nomenclature ON PROJECT vs AVAILABLE (strictly no "Free / Busy")
       processedWorkers = rawEmployees.map((emp, idx) => {
-        const id = emp.employee_id || `EMP-${100 + (emp.id || idx + 1)}`;
-        const dbId = emp.id || idx + 1;
-        const name = emp.name || emp.full_name || `Employee ${idx + 1}`;
-        const role = emp.role || emp.position || emp.job_title || 'Employee';
-        const department = emp.department || emp.dept || 'General';
+        const id = emp.employee_id;
+         if (!id) return null;
+        const dbId = emp.id;
+         if (dbId === null || dbId === undefined) return null;
+        const name = emp.name || emp.full_name || null;
+         if (!name) return null;
+        const role = emp.role || emp.position || emp.job_title || null;
+        const department = emp.department || emp.dept || null;
         
         // Match with AI workloads from /ai/workloads
         const wlInfo = rawAiWorkloads.find(w => w.employee_id === dbId || w.employee_code === id);
@@ -5748,7 +5852,7 @@
         // Real skills from employee_skills - NO synthetic fallback names or skills!
         let empSkills = skillMap[dbId] || skillMap[id] || [];
         if (empSkills.length === 0 && Array.isArray(emp.skills)) {
-          empSkills = emp.skills.map(s => (typeof s === 'string' ? { name: s, proficiency: 80 } : { name: s.name || s.skill, proficiency: s.proficiency || 80 }));
+          empSkills = emp.skills.map(s => (typeof s === 'string' ? { name: s, proficiency: null } : { name: s.name || s.skill, proficiency: s.proficiency ?? s.level ?? null }));
         }
 
         // Current Project Assignment: Read directly from backend emp.current_project_id & emp.current_project_name
@@ -5797,7 +5901,6 @@
         const status = isOnProj ? 'ON PROJECT' : 'AVAILABLE';
         const statusKey = isOnProj ? 'on_project' : 'available';
 
-        if (!workload && isOnProj) workload = 60;
         if (!wlInfo && workload >= 100) workloadLabel = 'OVERLOADED';
         else if (!wlInfo && workload >= 75) workloadLabel = 'HIGH';
         else if (!wlInfo && workload >= 40) workloadLabel = 'MEDIUM';
@@ -5806,7 +5909,7 @@
         let performance = (typeof emp.performance_score === 'number' && emp.performance_score > 0) ? emp.performance_score : (typeof emp.performance === 'number' && emp.performance > 0 ? emp.performance : null);
 
         return { dbId, id, name, role, department, status, statusKey, skills: empSkills, currentProject, current_project_id: currentProjectId, workload, workloadLabel, performance, rfid_uid: emp.rfid_uid };
-      });
+      }).filter(Boolean);
 
       // Update project team sizes directly based on persisted current_project_id
       processedProjects.forEach(p => {
@@ -5822,17 +5925,19 @@
 
       // 3. Process Tasks with standard status nomenclature: PENDING, IN_PROGRESS, COMPLETED, OVERDUE, BLOCKED
       processedTasks = rawTasks.map((t, idx) => {
-        const id = t.id || idx + 1;
-        const projectId = t.project_id || (processedProjects[0]?.id || 1);
+        const id = t.id;
+         if (id === null || id === undefined) return null;
+        const projectId = (t.project_id !== undefined && t.project_id !== null) ? t.project_id : null;
         const projectObj = processedProjects.find(p => p.id === projectId);
-        const projectName = projectObj ? projectObj.name : `Project ${projectId}`;
-        const title = t.task_name || t.title || `Task #${id}`;
+        const projectName = projectObj ? projectObj.name : null;
+        const title = t.task_name || t.title || null;
+         if (!title) return null;
         const description = t.description || '';
-        const skill = t.required_skill || 'General';
-        const skillLevel = t.required_skill_level || 80;
-        const priority = t.priority || 'Medium';
+        const skill = t.required_skill || null;
+        const skillLevel = (t.required_skill_level !== undefined && t.required_skill_level !== null) ? t.required_skill_level : null;
+        const priority = t.priority || null;
         const deadline = t.deadline || null;
-        const assignedDate = t.assigned_date ? t.assigned_date.split('T')[0] : (t.created_at ? t.created_at.split('T')[0] : 'â€”');
+        const assignedDate = t.assigned_date ? t.assigned_date.split('T')[0] : (t.created_at ? t.created_at.split('T')[0] : '—');
         
         let assignedName = 'Unassigned';
         if (t.assigned_employee_id) {
@@ -5922,8 +6027,8 @@
       if (wfAvailPct) wfAvailPct.textContent = `${availablePct}% ready for dispatch`;
       if (barDeployed) barDeployed.style.width = `${onProjectPct}%`;
       if (barAvailable) barAvailable.style.width = `${availablePct}%`;
-      if (barLabelDep) barLabelDep.textContent = `â€¢ On Project: ${onProjectCount} (${onProjectPct}%)`;
-      if (barLabelAvail) barLabelAvail.textContent = `â€¢ Available: ${availableCount} (${availablePct}%)`;
+      if (barLabelDep) barLabelDep.textContent = `• On Project: ${onProjectCount} (${onProjectPct}%)`;
+      if (barLabelAvail) barLabelAvail.textContent = `• Available: ${availableCount} (${availablePct}%)`;
 
       // 3. Task Overview
       const pendingTasksCount = processedTasks.filter(t => t.statusKey === 'pending').length;
@@ -6578,7 +6683,7 @@
     // Builds the 7 AI insight categories from real backend data only:
     // rawAiWorkloads (/ai/workloads), rawAiAllocations (/ai/allocations),
     // and the already-processed workers/projects/tasks. Any category with
-    // no qualifying data is simply omitted â€” never backfilled with a
+    // no qualifying data is simply omitted — never backfilled with a
     // generic placeholder.
     function generateAndRenderAIInsights(workers, projects, availableCount, totalWorkers) {
       const container = document.getElementById('ai-insights-list');
@@ -6598,7 +6703,7 @@
       const insights = [];
       const now = new Date();
 
-      // 1. Most overloaded employee â€” highest workload_percent from /ai/workloads
+      // 1. Most overloaded employee — highest workload_percent from /ai/workloads
       const withWorkload = workers.filter(w => typeof w.workload === 'number' && w.workload > 0);
       if (withWorkload.length > 0) {
         const mostOverloaded = withWorkload.reduce((a, b) => (b.workload > a.workload ? b : a));
@@ -6608,12 +6713,12 @@
             title: 'Most Overloaded Employee',
             time: 'Live',
             desc: `<strong>${escapeHtml(mostOverloaded.name)}</strong> (${escapeHtml(mostOverloaded.id)}) is at <strong>${mostOverloaded.workload}%</strong> workload (${escapeHtml(mostOverloaded.workloadLabel || '')}). Consider reassigning tasks.`,
-            action: 'Open Workload Page â†’', nav: 'workload'
+            action: 'Open Workload Page →', nav: 'workload'
           });
         }
       }
 
-      // 2. Most available employee â€” lowest workload among AVAILABLE workers
+      // 2. Most available employee — lowest workload among AVAILABLE workers
       const availableWorkers = workers.filter(w => w.statusKey === 'available');
       if (availableWorkers.length > 0) {
         const mostAvailable = availableWorkers.reduce((a, b) => ((b.workload || 0) < (a.workload || 0) ? b : a));
@@ -6621,12 +6726,12 @@
           type: 'alert-info',
           title: 'Most Available Employee',
           time: 'Live',
-          desc: `<strong>${escapeHtml(mostAvailable.name)}</strong> (${escapeHtml(mostAvailable.id)}) â€” ${escapeHtml(mostAvailable.role || 'Employee')} â€” has the lowest current workload (${mostAvailable.workload || 0}%) and is ready for dispatch.`,
-          action: 'Assign a Task â†’', nav: 'ai-allocation'
+          desc: `<strong>${escapeHtml(mostAvailable.name)}</strong> (${escapeHtml(mostAvailable.id)}) — ${escapeHtml(mostAvailable.role || 'Employee')} — has the lowest current workload (${mostAvailable.workload || 0}%) and is ready for dispatch.`,
+          action: 'Assign a Task →', nav: 'ai-allocation'
         });
       }
 
-      // 3. Highest skill-match employee â€” from /ai/allocations recommendations
+      // 3. Highest skill-match employee — from /ai/allocations recommendations
       let bestMatch = null;
       (rawAiAllocations || []).forEach(alloc => {
         const candidates = [alloc.recommended_employee, ...(alloc.alternatives || [])].filter(Boolean);
@@ -6642,11 +6747,11 @@
           title: 'Highest Skill-Match Employee',
           time: 'Live',
           desc: `<strong>${escapeHtml(bestMatch.name)}</strong> (${escapeHtml(bestMatch.employee_code || '')}) shows a <strong>${bestMatch.skill_match_percent}%</strong> skill match for "${escapeHtml(bestMatch.task_name || '')}".`,
-          action: 'Review AI Allocation â†’', nav: 'ai-allocation'
+          action: 'Review AI Allocation →', nav: 'ai-allocation'
         });
       }
 
-      // 4. Projects at risk â€” overdue, or ongoing with deadline within 7 days and progress under 70%
+      // 4. Projects at risk — overdue, or ongoing with deadline within 7 days and progress under 70%
       const atRiskProjects = projects.filter(p => {
         if (p.statusKey === 'overdue') return true;
         if (p.statusKey !== 'ongoing') return false;
@@ -6663,7 +6768,7 @@
           title: atRiskProjects.length > 1 ? `${atRiskProjects.length} Projects At Risk` : 'Project At Risk',
           time: 'Priority',
           desc: `<strong>${escapeHtml(target.name)}</strong> is at <strong>${target.progress}%</strong> progress against deadline <code>${escapeHtml(target.deadline || 'not set')}</code>.${atRiskProjects.length > 1 ? ` ${atRiskProjects.length - 1} other project(s) also need attention.` : ''}`,
-          action: 'Review Projects â†’', nav: 'projects'
+          action: 'Review Projects →', nav: 'projects'
         });
       }
 
@@ -6675,11 +6780,11 @@
           title: `${overdueTasks.length} Overdue Task${overdueTasks.length > 1 ? 's' : ''}`,
           time: 'Priority',
           desc: `"${escapeHtml(overdueTasks[0].title)}"${overdueTasks.length > 1 ? ` and ${overdueTasks.length - 1} more` : ''} past deadline and not yet completed.`,
-          action: 'Open Tasks â†’', nav: 'tasks'
+          action: 'Open Tasks →', nav: 'tasks'
         });
       }
 
-      // 6. Employees with skill gaps â€” no skills recorded in employee_skills at all
+      // 6. Employees with skill gaps — no skills recorded in employee_skills at all
       const skillGapEmployees = workers.filter(w => !w.skills || w.skills.length === 0);
       if (skillGapEmployees.length > 0) {
         insights.push({
@@ -6687,11 +6792,11 @@
           title: `${skillGapEmployees.length} Employee${skillGapEmployees.length > 1 ? 's' : ''} With No Skills On File`,
           time: 'Live',
           desc: `${escapeHtml(skillGapEmployees[0].name)}${skillGapEmployees.length > 1 ? ` and ${skillGapEmployees.length - 1} more` : ''} have no recorded skills, limiting AI matching accuracy.`,
-          action: 'Open Employees â†’', nav: 'employees'
+          action: 'Open Employees →', nav: 'employees'
         });
       }
 
-      // 7. Tasks approaching deadline â€” not completed, due within 3 days, not already overdue
+      // 7. Tasks approaching deadline — not completed, due within 3 days, not already overdue
       const approachingTasks = (typeof processedTasks !== 'undefined' ? processedTasks : []).filter(t => {
         if (t.statusKey === 'completed' || t.statusKey === 'overdue' || !t.deadline) return false;
         const d = new Date(t.deadline);
@@ -6705,7 +6810,7 @@
           title: `${approachingTasks.length} Task${approachingTasks.length > 1 ? 's' : ''} Approaching Deadline`,
           time: 'Live',
           desc: `"${escapeHtml(approachingTasks[0].title)}"${approachingTasks.length > 1 ? ` and ${approachingTasks.length - 1} more` : ''} due within 3 days.`,
-          action: 'Open Tasks â†’', nav: 'tasks'
+          action: 'Open Tasks →', nav: 'tasks'
         });
       }
 
@@ -6715,7 +6820,7 @@
           title: 'No Active Risk Signals',
           time: 'Live',
           desc: `Based on current data: no overdue tasks, no at-risk projects, and no approaching deadlines detected.`,
-          action: 'View All Projects â†’', nav: 'projects'
+          action: 'View All Projects →', nav: 'projects'
         });
       }
 
@@ -6733,7 +6838,7 @@
 
     // Derives a human-readable action label + badge type from one real
     // task_history row (old_status/new_status/progress transition).
-    // Every event here comes straight from the /task_history audit trail â€”
+    // Every event here comes straight from the /task_history audit trail —
     // nothing is invented or scheduled synthetically.
     function describeHistoryEvent(h) {
       const oldS = (h.old_status || '').toUpperCase();
@@ -6767,7 +6872,7 @@
       return d.toLocaleString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
     }
 
-    // Recent Activity panel â€” sourced entirely from real /task_history
+    // Recent Activity panel — sourced entirely from real /task_history
     // events (task assigned / started / progress updated / completed /
     // reopened / blocked), newest first. If the backend has no history
     // rows yet, this honestly says so instead of fabricating a feed.
@@ -6786,7 +6891,7 @@
         const desc = describeHistoryEvent(h);
         return {
           name: h.employee_name || 'Unassigned',
-          role: h.project_name || 'â€”',
+          role: h.project_name || '—',
           action: desc.action,
           type: desc.type,
           time: formatHistoryTime(h.changed_at)
@@ -6948,7 +7053,7 @@
         let workloadClass = w.workload >= 85 ? 'critical' : (w.workload >= 70 ? 'high' : 'optimal');
         const projectHtml = w.currentProject 
           ? `<span class="project-link-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>${escapeHtml(w.currentProject)}</span>`
-          : `<span class="project-link-badge none">â€”</span>`;
+          : `<span class="project-link-badge none">—</span>`;
 
         const perfDisplay = (w.performance !== null && w.performance !== undefined)
           ? `<div class="perf-score-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg><span>${w.performance}</span></div>`
@@ -7655,7 +7760,7 @@
 
       tbody.innerHTML = tasks.map(t => {
         const isAssigned = t.assignedName && t.assignedName !== 'Unassigned';
-        const initials = isAssigned ? t.assignedName.split(' ').map(n => n[0]).join('').slice(0, 2) : 'â€”';
+        const initials = isAssigned ? t.assignedName.split(' ').map(n => n[0]).join('').slice(0, 2) : '—';
         
         const assigneeHtml = isAssigned 
           ? `<div class="task-assignee-badge"><div class="task-assignee-avatar">${initials}</div><span>${escapeHtml(t.assignedName)}</span></div>`
@@ -7775,7 +7880,7 @@
       }
     }
 
-    // Real project metadata only â€” every field here comes directly from the
+    // Real project metadata only — every field here comes directly from the
     // /projects record already loaded into processedProjects. No synthetic
     // problem statements, owners, clients, or team sizes are generated.
     function getEnrichedProjectMetadata(p) {
@@ -7832,7 +7937,7 @@
       document.getElementById('ai-team-proj-display-name').textContent = `${meta.name} (${meta.code})`;
       document.getElementById('ai-team-proj-display-desc').textContent = meta.description || 'No description on file for this project.';
 
-      // Populate details card â€” real fields only
+      // Populate details card — real fields only
       document.getElementById('ai-proj-problem').textContent = meta.description || 'No description provided.';
       document.getElementById('ai-proj-deadline').textContent = meta.deadline || 'No deadline set';
       document.getElementById('ai-proj-teamsize').textContent = `${meta.teamSize} Worker${meta.teamSize === 1 ? '' : 's'}`;
@@ -7915,7 +8020,7 @@
       }
 
       // Compute team formation from real backend data (async: hits
-      // /ai/projects/{id}/allocate, /ai/projects/{id}/allocation-preview and /ai/workloads)
+      // /ai/allocations and /ai/workloads)
       const teamData = await computeAiTeamFormation(p);
       generatedAiTeams[p.id] = teamData;
 
@@ -7925,7 +8030,7 @@
 
       if (genBtn) {
         genBtn.disabled = false;
-        genBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>âœ¦ Re-Analyze Team</span>`;
+        genBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>✦ Re-Analyze Team</span>`;
       }
 
       showToast(`AI Team successfully generated for ${p.name}!`);
@@ -7936,11 +8041,11 @@
     // per-project allocation. One "role card" is generated per real open
     // (non-COMPLETED) task that belongs to this project, not from a fixed
     // list of job titles. The assigned candidate for each task comes from
-    // GET /ai/projects/{project_id}/allocate (the authoritative allocation â€”
-    // this is what returns KARTHICK/EMP001 â†’ "Build Chatbot API" for
+    // GET /ai/allocations (the authoritative read-only recommendation —
+    // this is what returns KARTHICK/EMP001 → "Build Chatbot API" for
     // Project 2's Task 5). Alternate candidates shown under "Replace" come
     // from GET /ai/projects/{project_id}/allocation-preview. Live workload
-    // comes from GET /ai/workloads. Nothing here is invented â€” a task with
+    // comes from GET /ai/workloads. Nothing here is invented — a task with
     // no backend-eligible candidate is left unassigned rather than filled
     // with a guess.
     async function computeAiTeamFormation(project) {
@@ -8043,7 +8148,7 @@
       const withCandidate = rolesList.filter(r => r.assigned);
       const noDataState = rolesList.length === 0;
 
-      // 1. Top summary card â€” every number here is an aggregate of REAL
+      // 1. Top summary card — every number here is an aggregate of REAL
       // per-task backend values (overall_score / skill_match_percent /
       // workload_percent), not a fabricated composite score.
       const avg = (arr) => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : null;
@@ -8072,7 +8177,7 @@
       setMetric('m-role-coverage', 'b-role-coverage', coveragePct);
       setMetric('m-avail-rate', 'b-avail-rate', availRate);
 
-      // 2. Team Health badges â€” plain-language labels derived from the real
+      // 2. Team Health badges — plain-language labels derived from the real
       // numbers above; no invented AI percentage attached to any of them.
       const coverageBadge = document.getElementById('ai-health-badge-coverage');
       if (coverageBadge) coverageBadge.textContent = `Task Coverage: ${coveragePct !== null ? (coveragePct >= 80 ? 'Good' : 'Gaps Found') : 'No Data'}`;
@@ -8090,7 +8195,7 @@
       if (deadlineBadge) deadlineBadge.textContent = `Deadline Risk: ${deadlineRiskLabel}`;
 
       const overallBadge = document.getElementById('ai-health-overall-badge');
-      if (overallBadge) overallBadge.textContent = noDataState ? 'â— No Open Tasks' : (coveragePct === 100 ? 'â— Fully Staffed' : 'â— Needs Attention');
+      if (overallBadge) overallBadge.textContent = noDataState ? '● No Open Tasks' : (coveragePct === 100 ? '● Fully Staffed' : '● Needs Attention');
 
       const workloadNote = document.getElementById('ai-health-note-workload');
       if (workloadNote) workloadNote.textContent = avgWorkload !== null
@@ -8101,7 +8206,7 @@
         ? `Project deadline is ${teamData.meta.deadline}${teamData.meta.daysRemaining !== null ? ` (${teamData.meta.daysRemaining} days from today)` : ''}.`
         : 'This project has no deadline set in the backend.';
 
-      // 3. Project Analysis Card â€” real counts only
+      // 3. Project Analysis Card — real counts only
       const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
       set('ai-analysis-roles-count', teamData.totalOpenTasks);
       set('ai-analysis-skills-count', withCandidate.length);
@@ -8113,7 +8218,7 @@
       // 4. Render Role Blocks (Tab 1)
       renderRoleCards(teamData);
 
-      // 5. Render Skill Gaps Table (Tab 2) â€” async, hits /ai/skill-gap
+      // 5. Render Skill Gaps Table (Tab 2) — async, hits /ai/skill-gap
       renderSkillGapsTable(teamData);
 
       // 6. Render Task Distribution (Tab 3)
@@ -8153,10 +8258,10 @@
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
                   <span>${escapeHtml(r.title)}</span>
                 </div>
-                <span class="ai-assigned-status-badge pending">â— No Match Found</span>
+                <span class="ai-assigned-status-badge pending">● No Match Found</span>
               </div>
               <div class="ai-role-body">
-                <p style="font-size: 12px; color: var(--text-secondary); padding: 6px 0;">The backend did not return an eligible candidate (via /ai/projects/{id}/allocate) for this task.</p>
+                <p style="font-size: 12px; color: var(--text-secondary); padding: 6px 0;">The backend did not return an eligible candidate (via /ai/allocations for this task.</p>
               </div>
             </div>
           `;
@@ -8168,7 +8273,7 @@
 
         const approvedBadge = isApproved 
           ? `<span class="ai-assigned-status-badge approved"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>Assigned</span></span>`
-          : `<span class="ai-assigned-status-badge pending">â— Recommended</span>`;
+          : `<span class="ai-assigned-status-badge pending">● Recommended</span>`;
 
         const actionButtons = isApproved
           ? `
@@ -8193,7 +8298,7 @@
         const warningHtml = candidate.isOverloaded
           ? `<div class="workload-warning-banner">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <span>Current workload (${candidate.currentWorkload}%) is already above the 80% threshold â€” assigning this worker adds to an already heavy load.</span>
+              <span>Current workload (${candidate.currentWorkload}%) is already above the 80% threshold — assigning this worker adds to an already heavy load.</span>
             </div>`
           : '';
 
@@ -8218,7 +8323,7 @@
                     <span>${escapeHtml(w.name)}</span>
                     <span class="id-pill" style="font-size: 10px;">${escapeHtml(w.id)}</span>
                   </h3>
-                  <p>${escapeHtml(w.role)} â€¢ ${escapeHtml(w.department)}</p>
+                  <p>${escapeHtml(w.role)} • ${escapeHtml(w.department)}</p>
                 </div>
               </div>
 
@@ -8256,7 +8361,7 @@
               <div class="ai-why-box" id="why-${r.key}">
                 <div class="ai-why-grid">
                   <div class="ai-why-item"><span class="lbl">Skill Match</span><span class="val" style="color: var(--accent-steel); font-weight: 700;">${candidate.skillMatchPercent !== null ? candidate.skillMatchPercent + '%' : 'N/A'}</span></div>
-                  <div class="ai-why-item"><span class="lbl">Overall Score</span><span class="val">${candidate.matchScore}% (from /ai/projects/:id/allocate)</span></div>
+                  <div class="ai-why-item"><span class="lbl">Overall Score</span><span class="val">${candidate.matchScore}% (from /ai/allocations)</span></div>
                   <div class="ai-why-item"><span class="lbl">Availability</span><span class="val">${escapeHtml(candidate.availability)}</span></div>
                   <div class="ai-why-item"><span class="lbl">Current Workload</span><span class="val">${candidate.currentWorkload !== null ? candidate.currentWorkload + '%' : 'N/A'}</span></div>
                   <div class="ai-why-item"><span class="lbl">AI Recommendation</span><span class="val">${candidate.recommendation ? escapeHtml(candidate.recommendation) : 'N/A'}</span></div>
@@ -8282,7 +8387,7 @@
 
     // Tab 2: Skill Gap & Workload. Skill gap rows come from a real
     // GET /ai/skill-gap/{employee_id}/{task_id} call per assigned
-    // candidate â€” whatever field names the backend returns are read
+    // candidate — whatever field names the backend returns are read
     // tolerantly via pickField(); if the backend returns nothing usable,
     // the panel says so instead of showing invented numbers.
     async function renderSkillGapsTable(teamData) {
@@ -8291,9 +8396,9 @@
 
       if (tbody) {
         if (!rolesList.length) {
-          tbody.innerHTML = `<tr><td colspan="5"><div class="empty-state-box"><p>Project-level skill gap data unavailable â€” no matched candidates for this project.</p></div></td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="5"><div class="empty-state-box"><p>Project-level skill gap data unavailable — no matched candidates for this project.</p></div></td></tr>`;
         } else {
-          tbody.innerHTML = `<tr><td colspan="5"><div class="loading-spinner-wrap"><div class="spinner"></div><span>Fetching skill-gap data from backendâ€¦</span></div></td></tr>`;
+          tbody.innerHTML = `<tr><td colspan="5"><div class="loading-spinner-wrap"><div class="spinner"></div><span>Fetching skill-gap data from backend…</span></div></td></tr>`;
         }
       }
 
@@ -8343,7 +8448,7 @@
         }
       }
 
-      // Render Workload Distribution â€” real current workload only, no
+      // Render Workload Distribution — real current workload only, no
       // predicted "after assignment" value.
       const workloadBox = document.getElementById('ai-workload-distribution-container');
       if (workloadBox) {
@@ -8377,7 +8482,7 @@
       }
     }
 
-    // Tab 3: Task & Responsibility Matrix â€” built directly from real tasks
+    // Tab 3: Task & Responsibility Matrix — built directly from real tasks
     // (teamData.roles is one entry per real, non-completed task). Predicted
     // duration is only shown if the backend actually supplied one; otherwise
     // "Not available" is shown rather than an invented day count.
@@ -8508,7 +8613,7 @@
   }).join('');
 }
 // Tab 4: Timeline & Milestone Prediction. No hardcoded phase durations or
-    // dates â€” each "phase card" is one real task for this project, ordered
+    // dates — each "phase card" is one real task for this project, ordered
     // by its actual deadline. Risk/delay are simple derivations of the real
     // project deadline and task status, not an invented AI percentage.
     function renderTimelinePhases(teamData) {
@@ -8528,7 +8633,7 @@
 
       if (container) {
         if (!allProjectTasks.length) {
-          container.innerHTML = `<div class="empty-state-box"><p>No tasks found for this project â€” timeline prediction unavailable.</p></div>`;
+          container.innerHTML = `<div class="empty-state-box"><p>No tasks found for this project — timeline prediction unavailable.</p></div>`;
         } else {
           container.innerHTML = allProjectTasks.map(t => {
             const status = String(t.status || 'PENDING').toUpperCase();
@@ -8545,7 +8650,7 @@
         }
       }
 
-      // Buffer / risk / delay â€” derived only from the project's real
+      // Buffer / risk / delay — derived only from the project's real
       // deadline and its real task statuses.
       const deadlineStr = teamData.meta.deadline;
       const daysRemaining = teamData.meta.daysRemaining;
@@ -8575,7 +8680,7 @@
       if (riskDescEl) {
         riskDescEl.textContent = overdueTasks.length
           ? `${overdueTasks.length} task(s) are already past their deadline. ${deadlineStr ? `Project deadline is ${deadlineStr}.` : ''}`
-          : (deadlineStr ? `No overdue tasks. Project deadline is ${deadlineStr}${daysRemaining !== null ? ` (${daysRemaining} days remaining)` : ''}.` : 'No deadline is set for this project in the backend â€” a reliable timeline prediction is unavailable.');
+          : (deadlineStr ? `No overdue tasks. Project deadline is ${deadlineStr}${daysRemaining !== null ? ` (${daysRemaining} days remaining)` : ''}.` : 'No deadline is set for this project in the backend — a reliable timeline prediction is unavailable.');
       }
       const riskValEl = document.getElementById('ai-timeline-risk-val');
       if (riskValEl) {
@@ -8592,14 +8697,14 @@
       const btn = document.getElementById('btn-approve-entire-team');
 
       if (teamData.isEntireTeamApproved) {
-        if (title) title.innerHTML = `<span style="color: var(--status-success);">âœ“ AI Team Assigned & Deployed</span>`;
+        if (title) title.innerHTML = `<span style="color: var(--status-success);">✓ AI Team Assigned & Deployed</span>`;
         if (sub && teamData.approvalMeta) {
-          sub.textContent = `Approved by: ${teamData.approvalMeta.approvedBy} â€¢ ${teamData.approvalMeta.approvalTime} â€¢ Team Size: ${teamData.approvalMeta.teamSize} Workers`;
+          sub.textContent = `Approved by: ${teamData.approvalMeta.approvedBy} • ${teamData.approvalMeta.approvalTime} • Team Size: ${teamData.approvalMeta.teamSize} Workers`;
         }
         if (btn) {
           btn.className = 'btn btn-success';
           btn.disabled = true;
-          btn.innerHTML = `<span>âœ“ Entire Team Assigned</span>`;
+          btn.innerHTML = `<span>✓ Entire Team Assigned</span>`;
         }
       } else {
         if (title) title.textContent = 'Manager Approval Required';
@@ -8607,7 +8712,7 @@
         if (btn) {
           btn.className = 'btn btn-primary';
           btn.disabled = false;
-          btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>âœ“ Approve Entire AI Team</span>`;
+          btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span>✓ Approve Entire AI Team</span>`;
         }
       }
     }
@@ -8635,7 +8740,7 @@
       }
 
       // Persist assignment in local state so it is immediately reflected.
-      // Workload is NOT guessed here â€” invalidate the cache so the next
+      // Workload is NOT guessed here — invalidate the cache so the next
       // fetch pulls the real post-assignment number from /ai/workloads.
       roleItem.isApproved = true;
       worker.current_project_id = projId;
@@ -8764,7 +8869,7 @@
 
       if (titleEl) titleEl.textContent = `Replace ${roleItem.roleConfig.shortRole}`;
       if (badgeEl) badgeEl.textContent = roleItem.roleConfig.shortRole;
-      if (curNameEl) curNameEl.textContent = `${roleItem.assigned.worker.name} (${roleItem.assigned.worker.id}) â€” Match: ${roleItem.assigned.matchScore}%`;
+      if (curNameEl) curNameEl.textContent = `${roleItem.assigned.worker.name} (${roleItem.assigned.worker.id}) — Match: ${roleItem.assigned.matchScore}%`;
 
       const tbody = document.getElementById('replace-worker-table-body');
       if (!tbody) return;
@@ -8780,7 +8885,7 @@
                 <div class="worker-table-avatar">${initials}</div>
                 <div class="worker-name-group">
                   <span class="worker-table-name">${escapeHtml(w.name)}</span>
-                  <span class="worker-table-id">${escapeHtml(w.id)} â€¢ ${escapeHtml(w.role)}</span>
+                  <span class="worker-table-id">${escapeHtml(w.id)} • ${escapeHtml(w.role)}</span>
                 </div>
               </div>
             </td>
@@ -8939,15 +9044,19 @@
       const levelInput = document.getElementById('ai-required-level');
 
       if (skillInput) skillInput.value = task.skill;
-      if (levelInput) levelInput.value = task.skillLevel || 80;
+      if (levelInput) levelInput.value = task.skillLevel ?? '';
     }
 
     async function runSingleTaskMatch() {
-      const skill = document.getElementById('ai-required-skill')?.value || 'Python';
-      const level = parseInt(document.getElementById('ai-required-level')?.value) || 80;
-      const taskId = parseInt(document.getElementById('ai-task-select')?.value) || 1;
+      const skill = document.getElementById('ai-required-skill')?.value?.trim() || '';
+      const level = Number(document.getElementById('ai-required-level')?.value);
+      const taskId = Number(document.getElementById('ai-task-select')?.value);
 
       const container = document.getElementById('ai-recommendations-container');
+      if (!skill || !Number.isInteger(level) || level < 1 || level > 100 || !Number.isInteger(taskId) || taskId < 1) {
+        if (container) container.innerHTML = '<div class="empty-state-box"><p>Verified task skill, skill level, and task ID are required.</p></div>';
+        return;
+      }
       const countEl = document.getElementById('ai-results-count');
       const titleEl = document.getElementById('ai-results-title');
 
@@ -8960,31 +9069,16 @@
         const res = await fetch(`${API_BASE_URL}/match?skill=${encodeURIComponent(skill)}&level=${level}`);
         if (res.ok) {
           matches = await res.json();
+        } else {
+          throw new Error(`HTTP ${res.status}`);
         }
       } catch (e) {
-        console.warn('API /match offline. Computing client-side match score.');
+        console.warn('API /match unavailable:', e.message);
+        matches = [];
       }
 
-      if (!matches || matches.length === 0) {
-        matches = processedWorkers.map(w => {
-          const empSkill = (w.skills || []).find(s => s.name.toLowerCase() === skill.toLowerCase());
-          const skillLevel = empSkill ? empSkill.proficiency : Math.floor(Math.random() * 25) + 60;
-          const availScore = w.statusKey === 'available' ? 100 : (w.statusKey === 'on_project' ? 50 : 20);
-          const workloadScore = Math.max(0, 100 - (w.workload || 0));
-          const overallScore = Math.round((skillLevel * 0.5) + (availScore * 0.3) + (workloadScore * 0.2));
-
-          return {
-            employee_id: w.dbId,
-            employee_name: w.name,
-            role: w.role,
-            skill: skill,
-            skill_level: skillLevel,
-            availability: w.status,
-            workload: w.workload || 0,
-            overall_score: overallScore
-          };
-        }).sort((a, b) => b.overall_score - a.overall_score);
-      }
+      // Never synthesize candidate scores in the browser. If the backend
+      // cannot evaluate the request, show an honest empty state.
 
       if (countEl) countEl.textContent = `${matches.length} Candidates`;
       renderAiRecommendations(matches, taskId, skill);
@@ -9000,14 +9094,16 @@
       }
 
       container.innerHTML = candidates.map((c, idx) => {
-        const name = c.name || c.employee_name || `Candidate ${idx + 1}`;
+        const name = c.name || c.employee_name || null;
+         if (!name) return '';
         const initials = name.split(' ').map(n => n[0]).join('').slice(0, 2);
-        const score = Math.round(c.overall_score || c.skill_level || 88);
-        const skillLvl = c.skill_level || 85;
-        const workload = typeof c.workload === 'number' ? c.workload : 40;
-        const availability = c.availability || 'Available';
-        const role = c.role || 'Software Engineer';
-        const empId = c.employee_id || idx + 1;
+        const score = (c.overall_score !== undefined && c.overall_score !== null) ? Math.round(c.overall_score) : null;
+        const skillLvl = (c.skill_level !== undefined && c.skill_level !== null) ? c.skill_level : null;
+        const workload = typeof c.workload === 'number' ? c.workload : null;
+        const availability = c.availability || 'No data';
+        const role = c.role || 'No role recorded';
+        const empId = c.employee_id;
+         if (empId === null || empId === undefined) return '';
         const rank = idx + 1;
         const cardClass = rank === 1 ? 'rank-1' : '';
 
@@ -9021,16 +9117,16 @@
                     <span>#${rank} ${escapeHtml(name)}</span>
                     <span class="badge-sub blue" style="font-size: 9.5px;">${escapeHtml(c.skill || targetSkill)}</span>
                   </h3>
-                  <p>${escapeHtml(role)} â€¢ Lvl ${skillLvl} Competency</p>
+                  <p>${escapeHtml(role)} • Lvl ${skillLvl} Competency</p>
                 </div>
               </div>
 
               <div style="display: flex; align-items: center; gap: 16px;">
                 <div class="score-badge-circle">
-                  <span class="score-val">${score}%</span>
+                  <span class="score-val">${score !== null ? `${score}%` : 'No score'}</span>
                   <span class="score-label">Match Score</span>
                 </div>
-                <button class="btn btn-primary" id="assign-btn-${empId}" onclick="approveAssignment(${taskId}, ${empId}, '${escapeHtml(name)}', ${score})">
+                <button class="btn btn-primary" id="assign-btn-${empId}" ${score === null ? 'disabled' : ''} onclick="approveAssignment(${taskId}, ${empId}, '${escapeHtml(name)}', ${score === null ? 'null' : score})">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
                   <span>Approve & Assign</span>
                 </button>
@@ -9044,8 +9140,8 @@
               </div>
               <div style="display: flex; align-items: center; gap: 8px;">
                 <span style="color: var(--text-muted);">Workload:</span>
-                <div class="workload-track" style="flex: 1;"><div class="workload-bar-fill ${workload >= 80 ? 'critical' : 'optimal'}" style="width: ${workload}%;"></div></div>
-                <span style="font-family: var(--font-mono); color: var(--text-secondary);">${workload}%</span>
+                <div class="workload-track" style="flex: 1;"><div class="workload-bar-fill ${workload >= 80 ? 'critical' : 'optimal'}" style="width: ${workload !== null ? `${workload}%` : 'No workload data'};"></div></div>
+                <span style="font-family: var(--font-mono); color: var(--text-secondary);">${workload !== null ? `${workload}%` : 'No workload data'}</span>
               </div>
             </div>
 
@@ -9055,10 +9151,10 @@
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
               </button>
               <div class="accordion-content" id="acc-${empId}">
-                <div class="reason-point">Strong <strong>${escapeHtml(c.skill || targetSkill)}</strong> skills with validated proficiency level of <strong>${skillLvl}%</strong>.</div>
+                <div class="reason-point">Strong <strong>${escapeHtml(c.skill || targetSkill)}</strong> skills with validated proficiency level of <strong>${skillLvl !== null ? `${skillLvl}%` : 'No skill score'}</strong>.</div>
                 <div class="reason-point">Currently <strong>${escapeHtml(availability)}</strong> with immediate deployment availability capacity.</div>
-                <div class="reason-point">Workload is at <strong>${workload}%</strong> (${workload < 50 ? 'Optimal capacity headroom, zero burnout risk' : 'Manageable sprint capacity'}).</div>
-                <div class="reason-point">AI Weighted Composition: 50% Skill Match + 30% Availability + 20% Workload Balance = <strong>${score}% Composite Index</strong>.</div>
+                <div class="reason-point">Workload is at <strong>${workload !== null ? `${workload}%` : 'No workload data'}</strong> (${workload < 50 ? 'Optimal capacity headroom, zero burnout risk' : 'Manageable sprint capacity'}).</div>
+                <div class="reason-point">AI Weighted Composition: 50% Skill Match + 30% Availability + 20% Workload Balance = <strong>${score !== null ? `${score}%` : 'No score'} Composite Index</strong>.</div>
               </div>
             </div>
           </div>
@@ -9073,40 +9169,47 @@
 
     async function approveAssignment(taskId, empId, empName, score) {
       const btn = document.getElementById(`assign-btn-${empId}`);
+      if (!taskId || !empId || !empName || score === null || score === undefined) {
+        showToast('Assignment cannot be saved: required backend data is unavailable.', true);
+        return;
+      }
       if (btn) {
         btn.innerHTML = `<div class="spinner" style="width: 12px; height: 12px; border-width: 1.5px;"></div><span>Saving...</span>`;
+        btn.disabled = true;
       }
-
       try {
-        await fetch(`${API_BASE_URL}/assignments`, {
+        const res = await fetch(`${API_BASE_URL}/assignments`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            task_id: taskId || 1,
+            task_id: taskId,
             employee_id: empId,
             employee_name: empName,
             skill_match_score: score
           })
         });
+        if (!res.ok) {
+          let detail = `HTTP ${res.status}`;
+          try {
+            const data = await res.json();
+            detail = data.detail || data.error || data.message || detail;
+          } catch (_) {}
+          throw new Error(detail);
+        }
+        await fetchDashboardData();
+        if (btn) {
+          btn.className = 'btn btn-success';
+          btn.innerHTML = `<span>✓ Assigned</span>`;
+        }
+        showToast(`Assigned ${empName} to task successfully.`);
       } catch (err) {
-        console.warn('API POST /assignments offline. Storing in local state.');
+        console.error('Assignment save failed:', err);
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = `<span>Approve & Assign</span>`;
+        }
+        showToast(`Assignment failed: ${err.message}`, true);
       }
-
-      const targetTask = processedTasks.find(t => t.id === taskId);
-      if (targetTask) {
-        targetTask.assignedName = empName;
-        targetTask.assignedEmployeeId = empId;
-        targetTask.status = 'In Progress';
-        targetTask.statusKey = 'in_progress';
-      }
-
-      if (btn) {
-        btn.className = 'btn btn-success';
-        btn.disabled = true;
-        btn.innerHTML = `<span>âœ“ Assigned</span>`;
-      }
-
-      showToast(`Assigned ${empName} to task successfully.`);
     }
 
     function prefillAndOpenAiMatch(taskId) {
@@ -9193,7 +9296,7 @@
 
       tbody.innerHTML = workers.map((w, idx) => {
         const initials = w.name ? w.name.split(' ').map(n => n[0]).join('').slice(0, 2) : '--';
-        const checkinTime = w.statusKey === 'on_leave' ? 'â€” (PTO)' : `08:${40 + (idx % 18)} AM`;
+        const checkinTime = w.statusKey === 'on_leave' ? '— (PTO)' : `08:${40 + (idx % 18)} AM`;
         
         let statusBadgeClass = 'present';
         let statusLabel = 'Present';
@@ -9202,8 +9305,8 @@
         else if (w.statusKey === 'offline') { statusBadgeClass = 'offline'; statusLabel = 'Absent'; }
 
         const assignedTask = processedTasks.find(t => t.assignedEmployeeId === w.dbId || t.assignedName === w.name);
-        const taskName = assignedTask ? assignedTask.title : 'â€”';
-        const projectName = w.currentProject || 'â€”';
+        const taskName = assignedTask ? assignedTask.title : '—';
+        const projectName = w.currentProject || '—';
 
         return `
           <tr>
@@ -9212,14 +9315,14 @@
                 <div class="worker-table-avatar">${initials}</div>
                 <div class="worker-name-group">
                   <span class="worker-table-name">${escapeHtml(w.name)}</span>
-                  <span class="worker-table-id">${escapeHtml(w.id)} â€¢ RFID-UID: ${w.rfid_uid || (4900 + idx)}</span>
+                  <span class="worker-table-id">${escapeHtml(w.id)} • RFID-UID: ${w.rfid_uid || 'Not registered'}</span>
                 </div>
               </div>
             </td>
             <td><span class="date-badge" style="font-size: 12px;">${checkinTime}</span></td>
             <td><span class="status-pill ${statusBadgeClass}">${statusLabel}</span></td>
-            <td><span style="color: ${projectName !== 'â€”' ? 'var(--text-primary)' : 'var(--text-dim)'};">${escapeHtml(projectName)}</span></td>
-            <td><span style="color: ${taskName !== 'â€”' ? 'var(--text-secondary)' : 'var(--text-dim)'}; font-size: 12px;">${escapeHtml(taskName)}</span></td>
+            <td><span style="color: ${projectName !== '—' ? 'var(--text-primary)' : 'var(--text-dim)'};">${escapeHtml(projectName)}</span></td>
+            <td><span style="color: ${taskName !== '—' ? 'var(--text-secondary)' : 'var(--text-dim)'}; font-size: 12px;">${escapeHtml(taskName)}</span></td>
           </tr>
         `;
       }).join('');
@@ -9239,18 +9342,21 @@
         else if (w.statusKey === 'available') availableCount++;
         else if (w.statusKey === 'on_leave') onLeaveCount++;
 
-        const perf = typeof w.performance === 'number' ? w.performance : 90;
-        totalPerf += perf;
-        if (perf > maxPerf) {
-          maxPerf = perf;
-          topPerformer = w;
+        const perf = typeof w.performance === 'number' ? w.performance : null;
+        if (typeof perf === 'number') {
+          totalPerf += perf;
+          if (perf > maxPerf) {
+            maxPerf = perf;
+            topPerformer = w;
+          }
         }
       });
 
       const utilizationPct = totalWorkers > 0 ? Math.round((onProjectCount / totalWorkers) * 100) : 0;
       const availPct = totalWorkers > 0 ? Math.round((availableCount / totalWorkers) * 100) : 0;
       const leavePct = totalWorkers > 0 ? Math.round((onLeaveCount / totalWorkers) * 100) : 0;
-      const avgPerf = totalWorkers > 0 ? (totalPerf / totalWorkers).toFixed(1) : '92.0';
+      const perfWorkers = processedWorkers.filter(w => typeof w.performance === 'number');
+      const avgPerf = perfWorkers.length > 0 ? (totalPerf / perfWorkers.length).toFixed(1) : 'No data';
 
       const utilRateEl = document.getElementById('rep-utilization-rate');
       if (utilRateEl) utilRateEl.textContent = `${utilizationPct}%`;
@@ -9329,10 +9435,10 @@
       if (avgPerfEl) avgPerfEl.textContent = avgPerf;
 
       const topPerfEl = document.getElementById('rep-top-performer');
-      if (topPerfEl) topPerfEl.textContent = topPerformer ? `${topPerformer.name} (${topPerformer.performance || 95})` : 'Gokul (98)';
+      if (topPerfEl) topPerfEl.textContent = topPerformer ? `${topPerformer.name} (${topPerformer.performance})` : 'No verified performance data';
       
       const perfBar = document.getElementById('rep-perf-bar');
-      if (perfBar) perfBar.style.width = `${Math.min(100, Math.round(parseFloat(avgPerf)))}%`;
+      if (perfBar) perfBar.style.width = `${avgPerf !== 'No data' ? Math.min(100, Math.round(parseFloat(avgPerf))) : 0}%`;
     }
 
         function openWorkerDrawer(workerId) {
@@ -9431,7 +9537,7 @@
           historyContainer.innerHTML = worker.projectHistory.map(p => `
             <div class="profile-history-item">
               <span class="profile-history-name">${escapeHtml(p.name || p.project_name)}</span>
-              <span class="profile-history-meta">${escapeHtml(p.role || 'Contributor')} â€¢ ${escapeHtml(p.year || 'Completed')}</span>
+              <span class="profile-history-meta">${escapeHtml(p.role || 'Contributor')} • ${escapeHtml(p.year || 'Completed')}</span>
             </div>
           `).join('');
         } else {
@@ -9636,13 +9742,13 @@
       if (step === 1) {
         if (btnNext) {
           btnNext.style.display = 'inline-flex';
-          btnNext.querySelector('span').textContent = 'Next: Skills â†’';
+          btnNext.querySelector('span').textContent = 'Next: Skills →';
         }
         if (btnCreate) btnCreate.style.display = 'none';
       } else if (step === 2) {
         if (btnNext) {
           btnNext.style.display = 'inline-flex';
-          btnNext.querySelector('span').textContent = 'Next: Review â†’';
+          btnNext.querySelector('span').textContent = 'Next: Review →';
         }
         if (btnCreate) btnCreate.style.display = 'none';
         setTimeout(() => document.getElementById('wiz-skill-input')?.focus(), 100);
@@ -9728,7 +9834,7 @@
       container.innerHTML = Array.from(wizardSelectedSkills).map(s => `
         <span class="wizard-tag-pill">
           <span>${escapeHtml(s)}</span>
-          <button type="button" onclick="removeWizardSkill('${escapeHtml(s)}')" title="Remove skill">Ã—</button>
+          <button type="button" onclick="removeWizardSkill('${escapeHtml(s)}')" title="Remove skill">×</button>
         </span>
       `).join('');
     }
@@ -9739,11 +9845,11 @@
       const startVal = document.getElementById('wiz-proj-start')?.value || 'Not set';
       const deadlineVal = document.getElementById('wiz-proj-deadline')?.value || 'Not set';
       const priorityVal = document.getElementById('wiz-proj-priority')?.value || 'Medium';
-      const minLevelVal = document.getElementById('wiz-skill-level')?.value || 80;
+      const minLevelVal = document.getElementById('wiz-skill-level')?.value || 'Not set';
 
       document.getElementById('rev-proj-name').textContent = nameVal;
       document.getElementById('rev-proj-desc').textContent = descVal;
-      document.getElementById('rev-proj-schedule').textContent = `${startVal} â†’ ${deadlineVal}`;
+      document.getElementById('rev-proj-schedule').textContent = `${startVal} → ${deadlineVal}`;
 
       const prioEl = document.getElementById('rev-proj-priority');
       if (prioEl) {
@@ -10035,9 +10141,10 @@ function addSkillInputRow(defaultSkill = '', defaultLevel = 80) {
       const skillsToSave = [];
       skillRows.forEach(row => {
         const sName = row.querySelector('.skill-name-input')?.value.trim();
-        const sLevel = parseInt(row.querySelector('.skill-level-input')?.value) || 80;
-        if (sName) {
-          skillsToSave.push({ name: sName, level: Math.min(100, Math.max(1, sLevel)) });
+        const rawLevel = row.querySelector('.skill-level-input')?.value.trim();
+        const sLevel = Number(rawLevel);
+        if (sName && Number.isFinite(sLevel) && sLevel >= 1 && sLevel <= 100) {
+          skillsToSave.push({ name: sName, level: sLevel });
         }
       });
 
@@ -10324,12 +10431,12 @@ function addSkillInputRow(defaultSkill = '', defaultLevel = 80) {
             <span class="step-num">1</span>
             <span class="step-label">Project Details</span>
           </div>
-          <div class="wizard-step-arrow">â€º</div>
+          <div class="wizard-step-arrow">›</div>
           <div class="wizard-step-item" id="wiz-step-ind-2">
             <span class="step-num">2</span>
             <span class="step-label">Required Skills</span>
           </div>
-          <div class="wizard-step-arrow">â€º</div>
+          <div class="wizard-step-arrow">›</div>
           <div class="wizard-step-item" id="wiz-step-ind-3">
             <span class="step-num">3</span>
             <span class="step-label">Review & Create</span>
@@ -10449,13 +10556,13 @@ function addSkillInputRow(defaultSkill = '', defaultLevel = 80) {
       <!-- Modal Footer Controls -->
       <div class="modal-footer" style="justify-content: space-between;">
         <button type="button" class="btn btn-secondary" id="wiz-btn-back" onclick="handleWizardBack()" style="visibility: hidden;">
-          <span>â† Back</span>
+          <span>← Back</span>
         </button>
 
         <div style="display: flex; gap: 8px;">
           <button type="button" class="btn btn-secondary" onclick="closeNewProjectModal()">Cancel</button>
           <button type="button" class="btn btn-primary" id="wiz-btn-next" onclick="handleWizardNext()" style="min-width: 140px; justify-content: center;">
-            <span>Next: Skills â†’</span>
+            <span>Next: Skills →</span>
           </button>
           <button type="button" class="btn btn-primary" id="wiz-btn-create" onclick="handleCreateProject()" style="display: none; min-width: 140px; justify-content: center; background-color: var(--status-success); border-color: var(--status-success);">
             <span>Create Project</span>
